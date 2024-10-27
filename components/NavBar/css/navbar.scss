@@ -1,0 +1,40 @@
+.navBar{
+	.nav-bar-top{
+		position: fixed;
+		top: 0;
+		left:0;
+		z-index: 99;
+		width: 100%;
+		background-color:$base-color;
+		padding: 0rpx 30rpx 20rpx;
+		box-sizing: border-box;
+			.nav-bar-back{
+				@include flex(flex-start);
+				height: 60rpx;
+				background-color: #fff;
+				border-radius: 30rpx;
+				flex-grow: 1;
+				padding-left: 20rpx;
+				box-sizing: border-box;
+		}
+		.nav-bar-text{
+			font-size: 28rpx;
+			width: 100%;
+			margin-left: 20rpx;
+			color:#999;
+		}
+	}
+	.return-icon{
+		position: absolute;
+		height: 60rpx;
+		left: 0;
+		@include flex(center);
+	}
+	.serch-input{
+		font-size: 28rpx;
+		width: 100%;
+		text-indent: 20rpx;
+		color: #999999;
+	}
+}
+

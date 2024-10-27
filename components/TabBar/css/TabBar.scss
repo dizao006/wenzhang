@@ -1,0 +1,40 @@
+.tabBar{
+	@include flex();
+	width: 100%;
+	border-bottom: 1px solid #f5f5f5;
+	background-color: #FFFFFF;
+	box-sizing: border-box;
+	.tabScroll{
+		flex: 1;
+		box-sizing: border-box;
+		height: 90rpx;
+		overflow: hidden;
+		.box{
+			@include flex(flex-start);
+			box-sizing:border-box;
+			height: 90rpx;
+			.tab-item{
+				flex-shrink: 0;
+				padding: 0 10rpx;
+				color: #333333;
+				font-size: 28rpx;
+				&.active{
+					color: $base-color;
+				}
+			}
+		}
+	}
+	.icons{
+		width: 90rpx;
+		position: relative;
+		@include flex(center);
+		&:after{
+			content: "";
+			position: absolute;
+			height: 60rpx;
+			width: 3rpx;
+			left: 15rpx;
+			background-color: #ddd;
+		}
+	}
+}

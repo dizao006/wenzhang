@@ -1,0 +1,1 @@
+<view class="love" bindtap="{{b}}"><uni-icons wx:if="{{a}}" u-i="6611a9d5-0" bind:__l="__l" u-p="{{a}}"></uni-icons></view>

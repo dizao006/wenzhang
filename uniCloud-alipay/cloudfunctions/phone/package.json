@@ -1,0 +1,7 @@
+{
+  "name": "phone",
+  "dependencies": {},
+  "extensions": {
+    "uni-cloud-jql": {}
+  }
+}
