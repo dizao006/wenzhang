@@ -2,7 +2,7 @@
 	<view class="list-scorll-container">
 		<scroll-view scroll-y="true" class="list-scroll" @scrolltolower="loadMore">
 			<view>
-				<listCard @saveSearchHistory='props.saveSearchHistory' v-for="item in props.articleList" :key="item.id"
+				<listCard @saveSearchHistory='props.saveSearchHistory' v-for="item in props.articleList" :key="item._id"
 					:list="item">
 				</listCard>
 			</view>
@@ -24,7 +24,7 @@
 		get_article_list
 	} from "../../ajax/api/interface/home.js"
 	let props = defineProps(['articleList', 'loadData', "isLoadMore", 'saveSearchHistory'])
-	let emit = defineEmits(['loadMore', ])
+	let emit = defineEmits(['loadMore'])
 	let lo = ref('loading')
 	let isShow = computed(() => {
 		return props.isLoadMore === false ? props.isLoadMore : true

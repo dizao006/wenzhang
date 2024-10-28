@@ -2,7 +2,7 @@
 	<swiper class="swiper-container" :current="prop.activeIndex" @change="changeAct">
 		<swiper-item class="swiper-item" v-for="item in prop.artList" :key="item._id">
 			<ListItem :loadData="loadData[prop.activeIndex]" @loadMore="loadMore"
-				:articleList='articleData[prop.activeIndex]'>
+				:articleList='articleData[prop.activeIndex]' :isLoadMore="false">
 			</ListItem>
 		</swiper-item>
 	</swiper>
@@ -35,6 +35,8 @@
 	watch([() => prop.artList, () => prop.activeIndex, ], (n) => {
 		indx.value = n[0][n[1]]
 		getArtList(indx.value)
+	}, {
+		immediate: true
 	})
 
 	async function getArtList(num) {
@@ -56,7 +58,8 @@
 		})
 		//做一个缓存
 		let oldList = articleData.value[prop.activeIndex] || []
-		oldList.push(...articleList)
+		if (JSON.stringify(articleList) !== JSON.stringify(oldList))
+			oldList.push(...articleList)
 		articleData.value[prop.activeIndex] = oldList
 		loadData.value[prop.activeIndex].total = total
 	}
@@ -70,7 +73,6 @@
 					loading: 'noMore'
 				}
 			}
-			console.log("@@@ASD", loadData.value[prop.activeIndex]);
 			nextTick()
 			return
 		}

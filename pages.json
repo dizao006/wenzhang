@@ -32,6 +32,18 @@
 				"navigationBarTitleText": "用户登录",
 				"enablePullDownRefresh": false
 			}
+		},
+		{
+			"path": "pages/abelAdmin/abelAdmin",
+			"style": {
+				"navigationBarTitleText": "标签页管理"
+			}
+		},
+		{
+			"path": "pages/articleDetail/articleDetail",
+			"style": {
+				"navigationBarTitleText": "文章详情"
+			}
 		}
 	],
 	"globalStyle": {

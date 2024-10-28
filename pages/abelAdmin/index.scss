@@ -1,0 +1,50 @@
+page{
+	background-color: #f5f5f5;
+
+}
+.label-container{
+	.label-box{
+		margin-bottom: 20rpx;
+		background-color: #fff;
+		.header{
+			@include flex();
+			padding: 20rpx 30rpx;
+			font-size: 28rpx;
+			border-bottom: 1rpx solid #f5f5f5;
+			.title{
+				color: #666;
+			}
+			.edit{
+					color: #30b33a;
+					font-weight: bold;
+				}
+		}
+		.label-content{
+			@include flex(flex-start,row,wrap);
+			padding: 0 30rpx 30rpx;
+			.content-title-item{
+				position: relative;
+				padding: 4rpx 10rpx;
+				margin: 24rpx 20rpx 0 0;
+				border-radius: 10rpx;
+				border: 1rpx solid #666;
+				color: #666;
+				.inco-close{
+					position: absolute;
+					right: -16rpx;
+					top: -16rpx;
+					background-color: #fff;
+					border-radius: 50rpx;
+				}
+			}
+		}
+	}
+	.noData{
+		width: 100%;
+		font-size: 20rpx;
+		color:  #c3c3c3;
+		text-align: center;
+		padding: 100rpx 0;
+	}
+}
+

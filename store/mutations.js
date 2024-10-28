@@ -1,3 +1,6 @@
+import {
+	updateLableItem
+} from "@/ajax/api/interface/updateLableItem.js"
 export default {
 	updateUserInfo(state, userInfo) {
 		state.userInfo = userInfo
@@ -20,5 +23,13 @@ export default {
 		});
 		state.historyList = []
 		uni.setStorageSync('historyList', [])
+	},
+	setlabelList(state, data) {
+		uni.setStorageSync('labelList', data)
+		state.labelList = data
+	},
+	setlabelListItem(state, data) {
+		uni.setStorageSync('labelListItem', data)
+		state.labelListItem = data
 	}
 }

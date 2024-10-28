@@ -1,0 +1,7 @@
+{
+  "name": "setlabelListItem",
+  "dependencies": {},
+  "extensions": {
+    "uni-cloud-jql": {}
+  }
+}

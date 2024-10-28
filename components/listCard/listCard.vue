@@ -73,6 +73,10 @@
 	function goArticleDetail() {
 		//进入详情页面
 		emit('saveSearchHistory')
+		uni.navigateTo({
+			url: "/pages/articleDetail/articleDetail"
+		})
+
 	}
 </script>
 
