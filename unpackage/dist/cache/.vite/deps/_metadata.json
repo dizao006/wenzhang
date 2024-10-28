@@ -2,7 +2,14 @@
   "hash": "d3a98a42",
   "configHash": "0c480d03",
   "lockfileHash": "15025352",
-  "browserHash": "ce81b235",
-  "optimized": {},
+  "browserHash": "895cbb37",
+  "optimized": {
+    "marked": {
+      "src": "../../../../../../../../../../node_modules/marked/lib/marked.esm.js",
+      "file": "marked.js",
+      "fileHash": "f5e5400d",
+      "needsInterop": false
+    }
+  },
   "chunks": {}
 }
