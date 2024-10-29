@@ -1,8 +1,10 @@
 <template>
 	<view class="container">
 		<NavBar></NavBar>
-		<TabBar :labeList='shoTbale' :activeIndex='activeIndex' @changeIndex='changeIndex'></TabBar>
-		<ArticleList :artList='shoTbale' :activeIndex='activeIndex' class="list-container" @changeIndex='changeIndex'>
+		<TabBar :labeList='shoTbale.length>1 ?shoTbale:allList' :activeIndex='activeIndex' @changeIndex='changeIndex'>
+		</TabBar>
+		<ArticleList :artList='shoTbale.length>1 ?shoTbale:allList' :activeIndex='activeIndex' class="list-container"
+			@changeIndex='changeIndex'>
 		</ArticleList>
 	</view>
 </template>
@@ -24,19 +26,18 @@
 	} from "../../ajax/api/interface/home.js"
 	let activeIndex = ref(0)
 	const store = useStore()
-	let arr = ref([])
 	const shoTbale = ref()
 
 	function changeIndex(val) {
 		activeIndex.value = val
 	}
+	const allList = ref()
 	onMounted(async () => {
-		if (arr.value.length > 0) return
-		const list = await getLableList()
-		arr.value = [{
+		allList.value = await getLableList()
+		allList.value = [{
 			name: '全部'
-		}, ...list]
-		store.commit('setlabelList', arr.value)
+		}, ...allList.value]
+		store.commit('setlabelList', allList.value)
 	})
 
 	watch(() => store.state.labelListItem, (n, v) => {

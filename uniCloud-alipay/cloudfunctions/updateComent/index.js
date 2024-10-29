@@ -40,16 +40,12 @@ exports.main = async (event, context) => {
 		let commentIndex = comments.findIndex(e => e.comment_id === comment_id)
 		//如果是子评论回复子评论
 		if (isRepaly) {
-			repaly
 			commentAuthor = comments[commentIndex].replay.find(e => e.comment_id === repaly_id)
 				.author //找指定的用户
 				.author_name //当前发布评论这个人
 		} else {
 			commentAuthor = comments.find(item => item.comment_id === comment_id).author.author_name
 		}
-
-
-
 		commentObj.to = commentAuthor
 		commentObj = {
 			[commentIndex]: {

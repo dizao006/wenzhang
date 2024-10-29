@@ -82,7 +82,8 @@
 	watch(() => userInfo, (n, o) => {
 		cloneLableList.value = n.labelIds
 	}, {
-		immediate: true
+		immediate: true,
+		deep: true
 	})
 
 	function changeEdit() {

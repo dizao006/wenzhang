@@ -31,14 +31,12 @@
 	const props = defineProps(['isshow'])
 	const emit = defineEmits(['closeShow', 'sendDataComent'])
 	const commentValue = ref()
-	onMounted(() => {
-		console.log(popup.value)
-	})
 	watch(() => props.isshow, (n) => {
 		if (n) {
 			popup.value.open()
 		} else {
 			popup.value.close()
+
 		}
 	})
 
@@ -49,6 +47,7 @@
 	async function sendComentData() {
 		if (commentValue.value == '') return
 		emit('sendDataComent', commentValue.value)
+		commentValue.value = ''
 	}
 </script>
 

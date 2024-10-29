@@ -1,6 +1,6 @@
 <template>
 	<view class="love" @click="changeSaveHeart($event)">
-		<uni-icons :type="isSave ? 'heart-filled':'heart'" color="$ff6600" size="20"></uni-icons>
+		<uni-icons :type="isSave ? 'heart-filled' : 'heart' " color="$ff6600" size="24"></uni-icons>
 	</view>
 </template>
 
@@ -19,6 +19,7 @@
 		onMounted,
 		ref
 	} from 'vue';
+	import Item from 'antd/es/list/Item';
 	const {
 		checkLogin
 	} = useIsLoggedIn();

@@ -11,11 +11,12 @@
 				</view>
 				<view class="detail-header-content-info">
 					<text>发布时间：{{ Parms.create_time }}</text><br />
-					<text>浏览量：{{ Parms.thumbs_up_count }}</text>
-					<text>收藏：{{ Parms.browse_count }}</text>
+					<text>浏览量：{{ Parms.browse_count  }}</text>
+					<text>赞：{{ Parms.thumbs_up_count }}</text>
 				</view>
 			</view>
-			<button type="default" class="detail-header-button">取消关注</button>
+			<button type="default" class="detail-header-button"
+				@click="followAuthor">{{ isFllow ? '取消关注' : '关注'}}</button>
 		</view>
 		<view class="detail-content-container">
 			<view class="detail-html">
@@ -42,11 +43,9 @@
 				<view class="detail-bottom-icon-box">
 					<uni-icons type="chat" size="22" color="#f07373"></uni-icons>
 				</view>
-				<view class="detail-bottom-icon-box">
-					<uni-icons type="heart" size="22" color="#f07373"></uni-icons>
-				</view>
-				<view class="detail-bottom-icon-box">
-					<uni-icons type="hand-up" size="22" color="#f07373"></uni-icons>
+				<love :itemId='Parms._id'></love>
+				<view class="detail-bottom-icon-box" @click="setGoodOk">
+					<uni-icons :type="isGood ? 'hand-up-filled':'hand-up'" size="22" color="#f07373"></uni-icons>
 				</view>
 			</view>
 		</view>
@@ -55,6 +54,7 @@
 </template>
 
 <script setup>
+	import love from "../../components/love/love.vue";
 	import commentBoxVue from "../../components/comment-box/commentBox.vue";
 	import {
 		onLoad
@@ -80,6 +80,12 @@
 	import {
 		getCommentData
 	} from "@/ajax/api/interface/getCommentData.js"
+	import {
+		updateFollow
+	} from "@/ajax/api/interface/updateFollow.js"
+	import {
+		updateGoodOk
+	} from "@/ajax/api/interface/updateGoodOk.js"
 	const store = useStore()
 	const {
 		checkLogin
@@ -88,6 +94,7 @@
 
 	const isShow = ref(false)
 	const commentList = ref({})
+	const repalyData = ref()
 
 	async function getcommentList() {
 		//获取文章的评论列表
@@ -122,7 +129,8 @@
 		closeShow()
 		//修改评论内容成功后，重新获取评论
 		repalyData.value = {}
-		getcommentList()
+		commentList.value = await getcommentList()
+
 	}
 
 	onLoad(async (options) => {
@@ -131,23 +139,72 @@
 			articleId: Parms.value._id
 		});
 		Parms.value = data
+		Parms.value.browse_count++
 		commentList.value = await getcommentList()
 	});
 	const content = computed(() => {
 		return Parms.value.content ? marked(Parms?.value?.content) : null
 	})
 
-	const repalyData = ref()
 
 	function repalyComment(data) {
 		//针对某条回复进行评论
-		console.log(data, 'sssddd')
 		closeShow()
 		repalyData.value = {
 			'comment_id': data.comment.comment_id,
 			isRepaly: data.isRepaly
 		}
 		data.comment.repaly_id && (repalyData.value.repaly_id = data.comment.repaly_id)
+	}
+
+	// 关注
+	const isFllow = computed(() => {
+		return store.state.userInfo.author_likes_ids.includes(Parms.value.author.id)
+	})
+	async function followAuthor() {
+		await checkLogin()
+		const res = await updateFollow({
+			authorId: Parms.value.author.id,
+			userId: store.state.userInfo._id
+		})
+		uni.showToast({
+			title: res.msg
+		})
+		let follwIds = [...store.state.userInfo.author_likes_ids]
+		if (follwIds.includes(Parms.value.author.id)) {
+			follwIds = follwIds.filter((e) => e != Parms.value.author.id)
+		} else {
+			follwIds.push(Parms.value.author.id)
+		}
+		store.commit('updateUserInfo', {
+			...store.state.userInfo,
+			author_likes_ids: follwIds
+		})
+	}
+
+	//点赞相关
+	const isGood = computed(() => {
+		return store.state.userInfo.thumbs_up_article_ids.includes(Parms.value._id)
+	})
+
+	async function setGoodOk() {
+		await checkLogin()
+		const res = await updateGoodOk({
+			articId: Parms.value._id,
+			userId: store.state.userInfo._id
+		})
+		let isGoodOks = [...store.state.userInfo.thumbs_up_article_ids]
+		if (isGoodOks.includes(Parms.value._id)) {
+			isGoodOks = isGoodOks.filter((e) => e !== Parms.value._id)
+			Parms.value.thumbs_up_count--
+		} else {
+			isGoodOks.push(Parms.value._id)
+			Parms.value.thumbs_up_count++
+		}
+		store.commit('updateUserInfo', {
+			...store.state.userInfo,
+			thumbs_up_article_ids: isGoodOks
+		})
 	}
 </script>
 

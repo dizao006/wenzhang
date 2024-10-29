@@ -10,6 +10,8 @@ exports.main = async (event, context) => {
 		articleId
 	} = event
 	// 获取用户Ids集合
+	console.log(articleId, 'articleId')
+
 	const userInfo = await db.collection('user').doc(userId).get();
 	const articleIds = userInfo.data[0].article_likes_ids
 	let returnMsg = null
@@ -28,7 +30,7 @@ exports.main = async (event, context) => {
 	})
 
 	const updateUserInfo = await db.collection('user').doc(userId).get()
-
+	console.log(updateUserInfo, 'updateUserInfo')
 	//返回数据给客户端
 	return {
 		code: 0,

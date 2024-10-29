@@ -1,10 +1,14 @@
 "use strict";
 const db = uniCloud.database();
+const dbcmd = db.command
 exports.main = async (event, context) => {
 	//event为客户端上传的参数
 	const {
 		articleId
 	} = event;
+	await db.collection('article').doc(articleId).update({
+		browse_count: dbcmd.inc(1)
+	})
 	const res = await db
 		.collection("article")
 		.aggregate()
