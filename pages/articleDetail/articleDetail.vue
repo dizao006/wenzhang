@@ -40,7 +40,7 @@
 				<uni-icons type="compose" size="16" color="#f07373"></uni-icons>
 			</view>
 			<view class="detail-bottom-icons">
-				<view class="detail-bottom-icon-box">
+				<view class="detail-bottom-icon-box" @click="goComment">
 					<uni-icons type="chat" size="22" color="#f07373"></uni-icons>
 				</view>
 				<love :itemId='Parms._id'></love>
@@ -204,6 +204,14 @@
 		store.commit('updateUserInfo', {
 			...store.state.userInfo,
 			thumbs_up_article_ids: isGoodOks
+		})
+	}
+
+
+	//goComment 跳转到评论页面
+	function goComment() {
+		uni.navigateTo({
+			url: `/pages/commentList/commentList?id=${Parms.value._id}`
 		})
 	}
 </script>
