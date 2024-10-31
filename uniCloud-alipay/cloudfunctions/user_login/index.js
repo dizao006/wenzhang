@@ -21,6 +21,7 @@ exports.main = async (event, context) => {
 		.aggregate()
 		.match(matchCondition)
 		.end();
+
 	// 检查是否有数据返回
 	if (res.data && res.data.length > 0) {
 		return {

@@ -12,36 +12,46 @@ if (!Math) {
 }
 const _sfc_main = {
   __name: "ListItem",
-  props: ["articleList", "loadData"],
+  props: ["articleList", "loadData", "isLoadMore", "saveSearchHistory"],
   emits: ["loadMore"],
   setup(__props, { emit: __emit }) {
     let props = __props;
     let emit = __emit;
     let lo = common_vendor.ref("loading");
-    common_vendor.watch(() => props.loadData.loading, (v, s) => {
+    let isShow = common_vendor.computed(() => {
+      return props.isLoadMore === false ? props.isLoadMore : true;
+    });
+    common_vendor.watch(() => {
+      var _a;
+      return (_a = props.loadData) == null ? void 0 : _a.loading;
+    }, (v, s) => {
       lo.value = v;
     });
     function loadMore() {
       emit("loadMore");
     }
     return (_ctx, _cache) => {
-      return {
+      return common_vendor.e({
         a: common_vendor.f(common_vendor.unref(props).articleList, (item, k0, i0) => {
           return {
-            a: item.id,
-            b: "0f582daa-0-" + i0,
-            c: common_vendor.p({
+            a: common_vendor.o(common_vendor.unref(props).saveSearchHistory, item._id),
+            b: item._id,
+            c: "0f582daa-0-" + i0,
+            d: common_vendor.p({
               list: item
             })
           };
         }),
-        b: common_vendor.p({
+        b: common_vendor.unref(isShow)
+      }, common_vendor.unref(isShow) ? {
+        c: common_vendor.p({
           status: common_vendor.unref(lo)
-        }),
-        c: common_vendor.o(loadMore)
-      };
+        })
+      } : {}, {
+        d: common_vendor.o(loadMore)
+      });
     };
   }
 };
-const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-0f582daa"], ["__file", "C:/Users/22216/Desktop/vue/移动端/项目/project1/components/ListItem/ListItem.vue"]]);
+const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-0f582daa"]]);
 wx.createComponent(Component);

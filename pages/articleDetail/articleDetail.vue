@@ -176,6 +176,7 @@
 		} else {
 			follwIds.push(Parms.value.author.id)
 		}
+		uni.$emit('updatefellow')
 		store.commit('updateUserInfo', {
 			...store.state.userInfo,
 			author_likes_ids: follwIds

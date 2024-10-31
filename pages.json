@@ -50,6 +50,20 @@
 			"style": {
 				"navigationBarTitleText": "评论列表"
 			}
+		},
+		{
+			"path" : "pages/myArticle/myArticle",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
+		},
+		{
+			"path" : "pages/feedback/feedback",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
 		}
 	],
 	"globalStyle": {

@@ -16,7 +16,7 @@ exports.main = async (event, context) => {
 			_id: articleId,
 		})
 		.end();
-	console.log(res);
+	console.log(res, 'res');
 	//返回数据给客户端
 	return {
 		code: 0,

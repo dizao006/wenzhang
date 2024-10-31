@@ -27,6 +27,7 @@
 		itemId
 	} = defineProps(['itemId']) //文章id
 	const userInfo = ref()
+	const emit = defineEmits(['updateArticle'])
 	const store = useStore()
 	onMounted(async () => {
 		userInfo.value = await checkLogin();
@@ -34,7 +35,6 @@
 	const isSave = computed(() => {
 		return userInfo.value && userInfo.value.article_likes_ids.includes(itemId)
 	})
-
 	async function changeSaveHeart(e) {
 		e.stopPropagation();
 		try {
@@ -48,6 +48,7 @@
 				userId: user._id
 			})
 			userInfo.value = newUserInfo
+			uni.$emit('updateArticle') //注册全局的事件
 			store.commit('updateUserInfo', newUserInfo)
 			uni.showToast({
 				title: msg,

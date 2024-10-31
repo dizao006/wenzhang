@@ -1,7 +1,6 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
 const ajax_api_interface_home = require("../../ajax/api/interface/home.js");
-require("../../ajax/http.js");
 if (!Array) {
   const _easycom_ListItem2 = common_vendor.resolveComponent("ListItem");
   _easycom_ListItem2();
@@ -29,6 +28,8 @@ const _sfc_main = {
     common_vendor.watch([() => prop.artList, () => prop.activeIndex], (n) => {
       indx.value = n[0][n[1]];
       getArtList(indx.value);
+    }, {
+      immediate: true
     });
     async function getArtList(num) {
       if (!loadData.value[prop.activeIndex]) {
@@ -47,7 +48,8 @@ const _sfc_main = {
         pageSize: pageSize.value
       });
       let oldList = articleData.value[prop.activeIndex] || [];
-      oldList.push(...articleList);
+      if (JSON.stringify(articleList) !== JSON.stringify(oldList))
+        oldList.push(...articleList);
       articleData.value[prop.activeIndex] = oldList;
       loadData.value[prop.activeIndex].total = total;
     }
@@ -59,7 +61,6 @@ const _sfc_main = {
             loading: "noMore"
           }
         };
-        console.log("@@@ASD", loadData.value[prop.activeIndex]);
         common_vendor.nextTick$1();
         return;
       }
@@ -77,7 +78,8 @@ const _sfc_main = {
         }),
         b: common_vendor.p({
           loadData: common_vendor.unref(loadData)[common_vendor.unref(prop).activeIndex],
-          articleList: common_vendor.unref(articleData)[common_vendor.unref(prop).activeIndex]
+          articleList: common_vendor.unref(articleData)[common_vendor.unref(prop).activeIndex],
+          isLoadMore: false
         }),
         c: common_vendor.unref(prop).activeIndex,
         d: common_vendor.o(changeAct)
@@ -85,5 +87,5 @@ const _sfc_main = {
     };
   }
 };
-const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-6335dad8"], ["__file", "C:/Users/22216/Desktop/vue/移动端/项目/project1/components/ArticleList/ArticleList.vue"]]);
+const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-6335dad8"]]);
 wx.createComponent(Component);

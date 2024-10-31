@@ -4,7 +4,10 @@
     "pages/follow/follow",
     "pages/self/self",
     "pages/serch/serch",
-    "pages/userinfo/login/login"
+    "pages/userinfo/login/login",
+    "pages/abelAdmin/abelAdmin",
+    "pages/articleDetail/articleDetail",
+    "pages/commentList/commentList"
   ],
   "window": {
     "navigationBarTextStyle": "white",

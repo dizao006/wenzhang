@@ -3,32 +3,35 @@ const common_vendor = require("../common/vendor.js");
 const ajax = ({
   name,
   data = {}
-  // 返回一个promise对象
 }) => {
-  return new Promise((reslove, reject) => {
-    common_vendor.index.showLoading({});
-    common_vendor.Ws.callFunction({
+  return new Promise((resolve, reject) => {
+    common_vendor.index.showLoading({
+      title: "加载中..."
+    });
+    common_vendor.Ys.callFunction({
       name,
-      //调用哪个方法
       data,
       success({
         result
       }) {
-        if (result.code == 0) {
-          reslove(result.data);
+        common_vendor.index.hideLoading();
+        if (result.code === 0) {
+          resolve(result.data);
         } else {
           common_vendor.index.showToast({
-            //没有拿到数据就提示失败
             icon: "none",
-            title: result.msg
+            title: result.msg || "未知错误"
           });
+          reject(new Error(result.msg || "未知错误"));
         }
       },
       fail(err) {
-        reject(err);
-      },
-      complete() {
         common_vendor.index.hideLoading();
+        common_vendor.index.showToast({
+          icon: "none",
+          title: err.message || "请求失败"
+        });
+        reject(err);
       }
     });
   });

@@ -1,12 +1,16 @@
 "use strict";
 Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
 const common_vendor = require("./common/vendor.js");
+const store_index = require("./store/index.js");
 if (!Math) {
   "./pages/index/index.js";
   "./pages/follow/follow.js";
   "./pages/self/self.js";
   "./pages/serch/serch.js";
   "./pages/userinfo/login/login.js";
+  "./pages/abelAdmin/abelAdmin.js";
+  "./pages/articleDetail/articleDetail.js";
+  "./pages/commentList/commentList.js";
 }
 const _sfc_main = {
   onLaunch: function() {
@@ -19,9 +23,9 @@ const _sfc_main = {
     console.log("App Hide");
   }
 };
-const App = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "C:/Users/22216/Desktop/vue/移动端/项目/project1/App.vue"]]);
 function createApp() {
-  const app = common_vendor.createSSRApp(App);
+  const app = common_vendor.createSSRApp(_sfc_main);
+  app.use(store_index.store);
   return {
     app
   };

@@ -5,6 +5,9 @@ import App from './App'
 import store from "./store/index"
 import './uni.promisify.adaptor'
 
+// main.js
+
+
 Vue.config.productionTip = false
 
 App.mpType = 'app'
@@ -26,7 +29,7 @@ export function createApp() {
 	const app = createSSRApp(App)
 	app.use(store) // 安装 Vuex store
 	return {
-		app
+		app,
 	}
 }
 // #endif

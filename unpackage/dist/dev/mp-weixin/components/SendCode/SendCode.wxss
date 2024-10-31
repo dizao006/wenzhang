@@ -27,17 +27,16 @@
 /* 全局系统样式定义 */
 .code-container {
   flex-shrink: 0;
-  margin-right: 20rpx;
-  position: relative;
+  position: absolute;
   width: 230rpx;
   text-align: center;
-  top: -66px;
-  transform: translate(250px);
+  top: 630rpx;
+  transform: translate(260px);
 }
 .code-container .vCode-btn {
   background-color: #f25037;
   color: #FFFFFF;
-  padding: 20rpx;
+  padding: 15rpx;
   border-radius: 10rpx;
   opacity: 0.8;
 }

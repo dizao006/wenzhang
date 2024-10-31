@@ -54,3 +54,19 @@
   margin-left: 20rpx;
   color: #999;
 }
+.navBar .return-icon {
+  position: absolute;
+  height: 60rpx;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
+.navBar .serch-input {
+  font-size: 28rpx;
+  width: 100%;
+  text-indent: 20rpx;
+  color: #999999;
+}

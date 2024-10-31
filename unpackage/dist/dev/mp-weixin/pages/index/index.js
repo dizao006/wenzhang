@@ -1,7 +1,6 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
 const ajax_api_interface_home = require("../../ajax/api/interface/home.js");
-require("../../ajax/http.js");
 if (!Array) {
   const _easycom_NavBar2 = common_vendor.resolveComponent("NavBar");
   const _easycom_TabBar2 = common_vendor.resolveComponent("TabBar");
@@ -17,32 +16,43 @@ if (!Math) {
 const _sfc_main = {
   __name: "index",
   setup(__props) {
-    let arr = common_vendor.ref([]);
     let activeIndex = common_vendor.ref(0);
+    const store = common_vendor.useStore();
+    const shoTbale = common_vendor.ref();
     function changeIndex(val) {
       activeIndex.value = val;
     }
+    const allList = common_vendor.ref();
     common_vendor.onMounted(async () => {
-      const list = await ajax_api_interface_home.getLableList();
-      arr.value = [{
+      allList.value = await ajax_api_interface_home.getLableList();
+      allList.value = [{
         name: "全部"
-      }, ...list];
+      }, ...allList.value];
+      store.commit("setlabelList", allList.value);
+    });
+    common_vendor.watch(() => store.state.labelListItem, (n, v) => {
+      shoTbale.value = [{
+        name: "全部"
+      }, ...n];
+    }, {
+      immediate: true,
+      deep: true
     });
     return (_ctx, _cache) => {
       return {
         a: common_vendor.o(changeIndex),
         b: common_vendor.p({
-          labeList: common_vendor.unref(arr),
+          labeList: shoTbale.value.length > 1 ? shoTbale.value : allList.value,
           activeIndex: common_vendor.unref(activeIndex)
         }),
         c: common_vendor.o(changeIndex),
         d: common_vendor.p({
-          artList: common_vendor.unref(arr),
+          artList: shoTbale.value.length > 1 ? shoTbale.value : allList.value,
           activeIndex: common_vendor.unref(activeIndex)
         })
       };
     };
   }
 };
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-1cf27b2a"], ["__file", "C:/Users/22216/Desktop/vue/移动端/项目/project1/pages/index/index.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-1cf27b2a"]]);
 wx.createPage(MiniProgramPage);
