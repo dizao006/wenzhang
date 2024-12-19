@@ -1,6 +1,6 @@
 import {
   __publicField
-} from "./chunk-LNEMQRCO.js";
+} from "./chunk-UV5CTPV7.js";
 
 // C:/Users/22216/node_modules/marked/lib/marked.esm.js
 function _getDefaults() {

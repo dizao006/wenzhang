@@ -1,18 +1,18 @@
 <template>
 	<view class="article-detail-container">
-		<view class="detail-title"> {{ Parms.title }} </view>
+		<view class="detail-title"> {{ Parms?.title }} </view>
 		<view class="detail-header">
 			<view class="detail-logo">
-				<image :src="Parms.author.avatar" mode="aspectFill"></image>
+				<image :src="Parms?.author.avatar" mode="aspectFill"></image>
 			</view>
 			<view class="detail-header-content">
 				<view class="detail-header-content-title">
-					{{ Parms.author.author_name }}
+					{{ Parms?.author.author_name }}
 				</view>
 				<view class="detail-header-content-info">
-					<text>发布时间：{{ Parms.create_time }}</text><br />
-					<text>浏览量：{{ Parms.browse_count  }}</text>
-					<text>赞：{{ Parms.thumbs_up_count }}</text>
+					<text>发布时间：{{ Parms?.create_time }}</text><br />
+					<text>浏览量：{{ Parms?.browse_count  }}</text>
+					<text>赞：{{ Parms?.thumbs_up_count }}</text>
 				</view>
 			</view>
 			<button type="default" class="detail-header-button"
@@ -43,7 +43,7 @@
 				<view class="detail-bottom-icon-box" @click="goComment">
 					<uni-icons type="chat" size="22" color="#f07373"></uni-icons>
 				</view>
-				<love :itemId='Parms._id'></love>
+				<love :itemId='Parms?._id'></love>
 				<view class="detail-bottom-icon-box" @click="setGoodOk">
 					<uni-icons :type="isGood ? 'hand-up-filled':'hand-up'" size="22" color="#f07373"></uni-icons>
 				</view>
@@ -134,16 +134,16 @@
 	}
 
 	onLoad(async (options) => {
-		Parms.value = JSON.parse(options.options);
+		const res = JSON.parse(JSON.stringify(options.options));
 		let data = await getAarticleDetatil({
-			articleId: Parms.value._id
+			articleId: res._id
 		});
 		Parms.value = data
 		Parms.value.browse_count++
 		commentList.value = await getcommentList()
 	});
 	const content = computed(() => {
-		return Parms.value.content ? marked(Parms?.value?.content) : null
+		return Parms?.value?.content ? marked(Parms?.value?.content) : null
 	})
 
 
@@ -159,22 +159,22 @@
 
 	// 关注
 	const isFllow = computed(() => {
-		return store.state.userInfo.author_likes_ids.includes(Parms.value.author.id)
+		return store.state.userInfo.author_likes_ids.includes(Parms.value?.author.id)
 	})
 	async function followAuthor() {
 		await checkLogin()
 		const res = await updateFollow({
-			authorId: Parms.value.author.id,
+			authorId: Parms.value?.author.id,
 			userId: store.state.userInfo._id
 		})
 		uni.showToast({
 			title: res.msg
 		})
 		let follwIds = [...store.state.userInfo.author_likes_ids]
-		if (follwIds.includes(Parms.value.author.id)) {
-			follwIds = follwIds.filter((e) => e != Parms.value.author.id)
+		if (follwIds.includes(Parms.value?.author.id)) {
+			follwIds = follwIds.filter((e) => e != Parms.value?.author.id)
 		} else {
-			follwIds.push(Parms.value.author.id)
+			follwIds.push(Parms.value?.author.id)
 		}
 		uni.$emit('updatefellow')
 		store.commit('updateUserInfo', {
@@ -185,7 +185,7 @@
 
 	//点赞相关
 	const isGood = computed(() => {
-		return store.state.userInfo.thumbs_up_article_ids.includes(Parms.value._id)
+		return store.state.userInfo.thumbs_up_article_ids.includes(Parms.value?._id)
 	})
 
 	async function setGoodOk() {

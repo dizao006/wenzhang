@@ -1,6 +1,7 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
 const ajax_api_interface_home = require("../../ajax/api/interface/home.js");
+const common_isLogin = require("../../common/isLogin.js");
 if (!Array) {
   const _easycom_NavBar2 = common_vendor.resolveComponent("NavBar");
   const _easycom_TabBar2 = common_vendor.resolveComponent("TabBar");
@@ -23,6 +24,12 @@ const _sfc_main = {
       activeIndex.value = val;
     }
     const allList = common_vendor.ref();
+    const {
+      checkLogin
+    } = common_isLogin.useIsLoggedIn();
+    common_vendor.onLoad(async () => {
+      await checkLogin();
+    });
     common_vendor.onMounted(async () => {
       allList.value = await ajax_api_interface_home.getLableList();
       allList.value = [{

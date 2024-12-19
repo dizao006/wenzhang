@@ -7,7 +7,9 @@
     "pages/userinfo/login/login",
     "pages/abelAdmin/abelAdmin",
     "pages/articleDetail/articleDetail",
-    "pages/commentList/commentList"
+    "pages/commentList/commentList",
+    "pages/myArticle/myArticle",
+    "pages/feedback/feedback"
   ],
   "window": {
     "navigationBarTextStyle": "white",

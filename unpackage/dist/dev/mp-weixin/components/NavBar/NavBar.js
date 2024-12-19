@@ -36,7 +36,6 @@ const _sfc_main = {
       }
     });
     function returnAfterView() {
-      H5;
       common_vendor.index.navigateBack();
     }
     function getSystemInfo() {

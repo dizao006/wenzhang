@@ -24,6 +24,12 @@
 	import {
 		getLableList
 	} from "../../ajax/api/interface/home.js"
+	import {
+		onLoad
+	} from "@dcloudio/uni-app"
+	import {
+		useIsLoggedIn
+	} from "@/common/isLogin.js"
 	let activeIndex = ref(0)
 	const store = useStore()
 	const shoTbale = ref()
@@ -32,6 +38,13 @@
 		activeIndex.value = val
 	}
 	const allList = ref()
+
+	const {
+		checkLogin
+	} = useIsLoggedIn()
+	onLoad(async () => {
+		await checkLogin()
+	})
 	onMounted(async () => {
 		allList.value = await getLableList()
 		allList.value = [{

@@ -1,0 +1,7 @@
+{
+  "name": "getArticFloow",
+  "dependencies": {},
+  "extensions": {
+    "uni-cloud-jql": {}
+  }
+}

@@ -13,7 +13,8 @@ if (!Math) {
 const _sfc_main = {
   __name: "love",
   props: ["itemId"],
-  setup(__props) {
+  emits: ["updateArticle"],
+  setup(__props, { emit: __emit }) {
     const {
       checkLogin
     } = common_isLogin.useIsLoggedIn();
@@ -40,6 +41,7 @@ const _sfc_main = {
           userId: user._id
         });
         userInfo.value = newUserInfo;
+        common_vendor.index.$emit("updateArticle");
         store.commit("updateUserInfo", newUserInfo);
         common_vendor.index.showToast({
           title: msg,

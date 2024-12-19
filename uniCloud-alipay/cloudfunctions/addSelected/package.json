@@ -1,0 +1,7 @@
+{
+  "name": "addSelected",
+  "dependencies": {},
+  "extensions": {
+    "uni-cloud-jql": {}
+  }
+}

@@ -1,0 +1,1 @@
+import{m as o,h as n}from"./index-DwdDHTgs.js";function e(){const e=o();return{checkLogin:()=>new Promise(((o,s)=>{const t=e.state.userInfo;t?(e.commit("updateUserInfo",t),o(t)):n({url:"/pages/userinfo/login/login"}).catch((o=>{s(o)}))}))}}export{e as u};

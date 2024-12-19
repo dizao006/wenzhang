@@ -1,27 +1,38 @@
 <template>
 	<!-- 当用户为登录状态时进行显示 -->
-	<view v-if="store.state.userInfo" class="my-header">
-		<view class="my-header-background">
-			<image :src="store.state.userInfo.avatar" mode="aspectFill"></image>
+	<view class="top">
+		<view class="left">
+			<uni-icons type="scan" size="25"></uni-icons>
 		</view>
+		<view class="right">
+			<uni-icons class="icon" type="notification" size="25"></uni-icons>
+			<uni-icons class="icon" type="gear" size="25"></uni-icons>
+		</view>
+	</view>
+	<view v-if="store.state.userInfo" class="my-header">
+		<!-- 	<view class="my-header-background">
+			<image :src="store.state.userInfo.avatar" mode="aspectFill"></image>
+		</view> -->
 		<view class="my-header-logo">
 			<view class="my-header-logo-box" @click="changeAvatar">
 				<image :src="store.state.userInfo.avatar" mode="aspectFill"></image>
 			</view>
-			<text class="user-name">{{store.state.userInfo.author_name}}</text>
+			<text @click="changeName" class="user-name">{{store.state.userInfo.author_name}}</text>
 		</view>
 		<view class="my-header-info">
 			<view class="my-header-info-box">
-				<text class="my-header-info-title">被关注</text>
 				<text>{{store.state.userInfo.follow_count}}</text>
+				<text class="my-header-info-title">被关注</text>
 			</view>
 			<view class="my-header-info-box">
-				<text class="my-header-info-title">粉丝</text>
+
 				<text>{{store.state.userInfo.fans_count}}</text>
+				<text class="my-header-info-title">粉丝</text>
 			</view>
 			<view class="my-header-info-box">
-				<text class="my-header-info-title">积分</text>
+
 				<text>{{store.state.userInfo.integral_count||0}}</text>
+				<text class="my-header-info-title">积分</text>
 			</view>
 		</view>
 	</view>
@@ -34,21 +45,101 @@
 			</view>
 			<uni-icons type="arrowright" size="14" color="#666"></uni-icons>
 		</view>
-		<view class="my-content-list" @click="gotoMySelfArtic">
-			<view class="my-content-list-title">
-				<uni-icons class="icons" type="contact" size="16" color="#666"></uni-icons>
-				<text>我的文章</text>
+
+		<view class="card">
+			<view class="list-text" @click="goCalendar">
+				<uni-icons size="35px" color="black" type="calendar"></uni-icons>
+				<text>签到</text>
 			</view>
-			<uni-icons type="arrowright" size="14" color="#666"></uni-icons>
-		</view>
-		<view class="my-content-list" @click="gotoFeedBack">
-			<view class="my-content-list-title">
-				<uni-icons class="icons" type="help" size="16" color="#666"></uni-icons>
-				<text>意见反馈</text>
+			<view class="list-text" @click="goVip">
+				<uni-icons size="35px" color="black" type="vip"></uni-icons>
+				<text>VIP</text>
 			</view>
-			<uni-icons type="arrowright" size="14" color="#666"></uni-icons>
+			<view class="list-text">
+				<uni-icons size="35px" color="black" type="flag"></uni-icons>
+				<text>Falg</text>
+			</view>
+			<view class="list-text">
+				<uni-icons size="35px" color="black" type="wallet"></uni-icons>
+				<text>账户</text>
+			</view>
 		</view>
 
+		<view class="createConter">
+			<view class="toptitle">
+				<text>创作者中心</text>
+				<view class="shouye">
+					<text>进入首页</text>
+					<uni-icons type="arrow-right"></uni-icons>
+				</view>
+
+			</view>
+			<view class="card">
+				<view class="list-text">
+					<uni-icons size="35px" color="black" type="gift"></uni-icons>
+					<text>礼物</text>
+				</view>
+				<view class="list-text">
+					<uni-icons size="35px" color="black" type="medal"></uni-icons>
+					<text>竞赛</text>
+				</view>
+				<view class="list-text">
+					<uni-icons size="35px" color="black" type="person"></uni-icons>
+					<text>个人</text>
+				</view>
+				<view class="list-text">
+					<uni-icons size="35px" color="black" type="bars"></uni-icons>
+					<text>草稿箱</text>
+				</view>
+			</view>
+			<view class="textCent">
+				<text> 欢迎各位创作者入驻缔造掘金</text>
+			</view>
+		</view>
+
+
+
+		<view class="createConter">
+			<view class="toptitle">
+				<text>常用功能</text>
+			</view>
+			<view class="card">
+				<view class="list-text" @click="gotoMySelfArtic">
+					<uni-icons size="35px" color="black" type="eye"></uni-icons>
+					<text>文章</text>
+				</view>
+				<view class="list-text">
+					<uni-icons size="35px" color="black" type="fire"></uni-icons>
+					<text>沸点</text>
+				</view>
+				<view class="list-text" @click="gotoFeedBack">
+					<uni-icons size="35px" color="black" type="help"></uni-icons>
+					<text>反馈</text>
+				</view>
+				<view class="list-text">
+					<uni-icons size="35px" color="black" type="locked"></uni-icons>
+					<text>锁屏</text>
+				</view>
+			</view>
+			<view class="card">
+				<view class="list-text">
+					<uni-icons size="35px" color="black" type="map-pin-ellipse"></uni-icons>
+					<text>推广</text>
+				</view>
+				<view class="list-text">
+					<uni-icons size="35px" color="black" type="phone"></uni-icons>
+					<text>联系</text>
+				</view>
+				<view class="list-text">
+					<uni-icons size="35px" color="black" type="undo"></uni-icons>
+					<text>分析</text>
+				</view>
+				<view class="list-text">
+					<uni-icons size="35px" color="black" type="paperclip"></uni-icons>
+					<text>记录</text>
+				</view>
+			</view>
+		</view>
 		<!-- #ifdef APP-PLUS -->
 		<view class="my-content-list" @click="haveNewVersion && get_new_version">
 			<view class="my-content-list-title">
@@ -64,7 +155,7 @@
 			<uni-icons type="arrowright" size="14" color="#666"></uni-icons>
 		</view>
 		<!-- #endif -->
-		<button v-if="store.state.userInfo" type="warn" class="sign-out" @click="siginOut">退出</button>
+		<!-- <button v-if="store.state.userInfo" type="warn" class="sign-out" @click="siginOut">退出</button> -->
 	</view>
 </template>
 
@@ -93,7 +184,7 @@
 			success: res => {
 				if (res.platform === 'android') {
 					plus.runtime.getProperty(plus.runtime.appid, wgtinfo => {
-						currentVersion.value = wgtinfo
+						currentVersion.value = wgtinfo.version
 						checkVersion()
 					})
 				}
@@ -106,6 +197,18 @@
 	function goLoginPage() {
 		uni.navigateTo({
 			url: "/pages/userinfo/login/login"
+		})
+	}
+
+	function goCalendar() {
+		uni.navigateTo({
+			url: "/pages/Calendar/Calendar"
+		})
+	}
+
+	function goVip() {
+		uni.navigateTo({
+			url: "/pages/VipBuy/VipBuy"
 		})
 	}
 
@@ -211,12 +314,13 @@
 
 <style scoped lang="scss">
 	page {
-		background-color: #f5f5f5;
+		background: linear-gradient(to bottom, #f9f9f9, #F8F8F8);
 	}
 
 	.my-header {
 		position: relative;
-		padding-bottom: 30rpx;
+		padding-bottom: 5rpx;
+		transform: translate(0, -30rpx);
 
 		.my-header-background {
 			position: absolute;
@@ -261,6 +365,7 @@
 
 		.my-header-info {
 			margin-top: 30rpx;
+
 			@include flex();
 
 			.my-header-info-box {
@@ -324,6 +429,70 @@
 			height: 100rpx;
 			border-radius: 50%;
 			margin-right: 40rpx;
+		}
+	}
+
+	.top {
+		// background: ;
+		display: flex;
+		justify-content: space-between;
+
+		.left {
+			margin-left: 10rpx;
+		}
+
+		.right {
+			// transform: translate(-20rpx);
+			margin-right: 16rpx;
+
+			.icon {
+				margin-left: 9rpx;
+			}
+		}
+
+	}
+
+	.card {
+		display: flex;
+		justify-content: space-around;
+		background: #f5f5f4;
+		border-radius: 5px;
+		margin: 5rpx 25rpx 20rpx 25rpx;
+
+		.list-text {
+			// padding: 10rpx;
+			margin: 20rpx 10rpx;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+	}
+
+	.createConter {
+		background: #f3f3f2;
+		margin: 4rpx;
+		border-radius: 5px;
+		margin: 5rpx 30rpx 20rpx 30rpx;
+
+		.toptitle {
+			display: flex;
+			justify-content: space-between;
+			// margin-left: 18rpx;
+			margin: 25rpx 5rpx 20rpx 20rpx;
+			padding-top: 15rpx;
+
+			.shouye {
+				margin-right: 18rpx;
+				color: rgba(0, 0, 0, 0.4);
+				font-size: 22rpx;
+			}
+		}
+
+		.textCent {
+			display: flex;
+			justify-content: center;
+			padding: 8rpx;
+			color: rgba(0, 0, 0, 0.5);
 		}
 	}
 </style>

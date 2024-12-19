@@ -83,7 +83,6 @@
 			browse_count,
 		};
 		emit("saveSearchHistory");
-		console.log(parms)
 		uni.navigateTo({
 			url: `/pages/articleDetail/articleDetail?options=${JSON.stringify(parms)}`,
 		});

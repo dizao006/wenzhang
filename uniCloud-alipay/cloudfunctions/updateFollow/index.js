@@ -8,7 +8,8 @@ exports.main = async (event, context) => {
 		authorId
 	} = event
 	const user = await db.collection('user').doc(userId).get()
-	const author_likes_ids = user.data[0].author_likes_ids
+	console.log(user, 'user')
+	const author_likes_ids = user.data[0].author_likes_ids || []
 	let authorIds = null
 	let result = ''
 	if (author_likes_ids.includes(authorId)) {

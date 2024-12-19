@@ -1545,9 +1545,9 @@ function populateParameters(fromRes, toRes) {
   const hostLanguage = language.replace(/_/g, "-");
   const parameters = {
     appId: "__UNI__EEB4416",
-    appName: "project1",
-    appVersion: "1.0.0",
-    appVersionCode: "100",
+    appName: "DZ俱乐部",
+    appVersion: "1.0.1",
+    appVersionCode: 101,
     appLanguage: getAppLanguage(hostLanguage),
     uniCompileVersion: "4.29",
     uniRuntimeVersion: "4.29",
@@ -1689,9 +1689,9 @@ const getAppBaseInfo = {
       hostSDKVersion: SDKVersion,
       hostTheme: theme,
       appId: "__UNI__EEB4416",
-      appName: "project1",
-      appVersion: "1.0.0",
-      appVersionCode: "100",
+      appName: "DZ俱乐部",
+      appVersion: "1.0.1",
+      appVersionCode: 101,
       appLanguage: getAppLanguage(hostLanguage)
     }));
   }
@@ -8693,6 +8693,18 @@ const pages = [
     path: "pages/commentList/commentList",
     style: {
       navigationBarTitleText: "评论列表"
+    }
+  },
+  {
+    path: "pages/myArticle/myArticle",
+    style: {
+      navigationBarTitleText: ""
+    }
+  },
+  {
+    path: "pages/feedback/feedback",
+    style: {
+      navigationBarTitleText: ""
     }
   }
 ];

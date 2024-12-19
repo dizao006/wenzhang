@@ -89,7 +89,6 @@ const _sfc_main = {
       });
     }
     function sendCodeData(data) {
-      console.log(data);
       PhoneCode.value = data;
     }
     async function submit(formData) {
@@ -140,7 +139,7 @@ const _sfc_main = {
     }
     return (_ctx, _cache) => {
       return common_vendor.e({
-        a: common_assets._imports_0,
+        a: common_assets._imports_0$1,
         b: common_vendor.o(changeType1),
         c: common_vendor.n(common_vendor.unref(type) == "account" ? "active" : ""),
         d: common_vendor.o(changeType2),

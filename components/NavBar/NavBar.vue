@@ -62,7 +62,7 @@
 		uni.switchTab({
 			url: "../../pages/index/index"
 		})
-		// #endif H5
+		// #endif
 		uni.navigateBack() //如果刷新的话会没有历史记录栈
 	}
 

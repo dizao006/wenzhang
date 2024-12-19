@@ -1,0 +1,1 @@
+<view class="data-v-007012f9"><list-card wx:for="{{a}}" wx:for-item="list" wx:key="a" class="data-v-007012f9" u-i="{{list.b}}" bind:__l="__l" u-p="{{list.c}}"></list-card><view wx:if="{{b}}" class="no-data data-v-007012f9">暂无发布的文章</view></view>

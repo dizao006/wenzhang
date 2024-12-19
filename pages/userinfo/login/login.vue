@@ -115,7 +115,6 @@
 	}
 
 	async function login() {
-		// console.log('登录', form.value);
 		let res = await form.value.validate()
 		if (res.vCode && res.vCode != PhoneCode.value) {
 			uni.showToast({
@@ -132,7 +131,6 @@
 	}
 
 	function sendCodeData(data) {
-		console.log(data)
 		PhoneCode.value = data
 	}
 

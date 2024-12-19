@@ -11,6 +11,8 @@ if (!Math) {
   "./pages/abelAdmin/abelAdmin.js";
   "./pages/articleDetail/articleDetail.js";
   "./pages/commentList/commentList.js";
+  "./pages/myArticle/myArticle.js";
+  "./pages/feedback/feedback.js";
 }
 const _sfc_main = {
   onLaunch: function() {

@@ -1,6 +1,7 @@
 <template>
 	<view class="tabBar">
-		<scroll-view scroll-x="true" class="tabScroll" :scroll-with-animation="true" :scroll-into-view="currentIndex">
+		<scroll-view scroll-x="true" class="tabScroll" :show-scrollbar='false' :scroll-with-animation="true"
+			:scroll-into-view="currentIndex">
 			<view class='box'>
 				<view @click="changeActive(index)" :class="{active:activeIndex==index}" :key="item._id" class='tab-item'
 					:id="`item${index}`" v-for="(item,index) in labeList">
