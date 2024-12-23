@@ -6,13 +6,10 @@
 		</view>
 		<view class="right">
 			<uni-icons class="icon" type="notification" size="25"></uni-icons>
-			<uni-icons class="icon" type="gear" size="25"></uni-icons>
+			<uni-icons class="icon" type="gear" size="25" @click="goSetting"></uni-icons>
 		</view>
 	</view>
 	<view v-if="store.state.userInfo" class="my-header">
-		<!-- 	<view class="my-header-background">
-			<image :src="store.state.userInfo.avatar" mode="aspectFill"></image>
-		</view> -->
 		<view class="my-header-logo">
 			<view class="my-header-logo-box" @click="changeAvatar">
 				<image :src="store.state.userInfo.avatar" mode="aspectFill"></image>
@@ -197,6 +194,12 @@
 	function goLoginPage() {
 		uni.navigateTo({
 			url: "/pages/userinfo/login/login"
+		})
+	}
+
+	function goSetting() {
+		uni.navigateTo({
+			url: "/pages/setting/setting"
 		})
 	}
 

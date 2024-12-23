@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<uni-section type="line">
-			<uni-collapse accordion v-model="accordionVal" @change="change">
+			<uni-collapse accordion>
 				<uni-collapse-item title="Q·1:什么是内部课">
 					<view class="content">
 						<text class="text">字节内部课是掘金联合字节技术团队推出的会员专享课程，在会员期有效期内可以免费学习，零距离感受大厂技术人的工作与学习方式，了解大厂优秀实践。</text>
@@ -25,6 +25,7 @@
 				</uni-collapse-item>
 			</uni-collapse>
 		</uni-section>
+
 	</view>
 </template>
 <script>
