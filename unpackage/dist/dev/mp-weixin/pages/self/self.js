@@ -23,10 +23,19 @@ const _sfc_main = {
         url: "/pages/userinfo/login/login"
       });
     }
-    function siginOut() {
-      store.commit("updateUserInfo", null);
+    function goSetting() {
       common_vendor.index.navigateTo({
-        url: "/pages/index/index"
+        url: "/pages/setting/setting"
+      });
+    }
+    function goCalendar() {
+      common_vendor.index.navigateTo({
+        url: "/pages/Calendar/Calendar"
+      });
+    }
+    function goVip() {
+      common_vendor.index.navigateTo({
+        url: "/pages/VipBuy/VipBuy"
       });
     }
     function gotoMySelfArtic() {
@@ -77,53 +86,127 @@ const _sfc_main = {
     }
     return (_ctx, _cache) => {
       return common_vendor.e({
-        a: common_vendor.unref(store).state.userInfo
+        a: common_vendor.p({
+          type: "scan",
+          size: "25"
+        }),
+        b: common_vendor.p({
+          type: "notification",
+          size: "25"
+        }),
+        c: common_vendor.o(goSetting),
+        d: common_vendor.p({
+          type: "gear",
+          size: "25"
+        }),
+        e: common_vendor.unref(store).state.userInfo
       }, common_vendor.unref(store).state.userInfo ? {
-        b: common_vendor.unref(store).state.userInfo.avatar,
-        c: common_vendor.unref(store).state.userInfo.avatar,
-        d: common_vendor.o(changeAvatar),
-        e: common_vendor.t(common_vendor.unref(store).state.userInfo.author_name),
-        f: common_vendor.o((...args) => _ctx.changeName && _ctx.changeName(...args)),
-        g: common_vendor.t(common_vendor.unref(store).state.userInfo.follow_count),
-        h: common_vendor.t(common_vendor.unref(store).state.userInfo.fans_count),
-        i: common_vendor.t(common_vendor.unref(store).state.userInfo.integral_count || 0)
+        f: common_vendor.unref(store).state.userInfo.avatar,
+        g: common_vendor.o(changeAvatar),
+        h: common_vendor.t(common_vendor.unref(store).state.userInfo.author_name),
+        i: common_vendor.o((...args) => _ctx.changeName && _ctx.changeName(...args)),
+        j: common_vendor.t(common_vendor.unref(store).state.userInfo.follow_count),
+        k: common_vendor.t(common_vendor.unref(store).state.userInfo.fans_count),
+        l: common_vendor.t(common_vendor.unref(store).state.userInfo.integral_count || 0)
       } : {}, {
-        j: !common_vendor.unref(store).state.userInfo
+        m: !common_vendor.unref(store).state.userInfo
       }, !common_vendor.unref(store).state.userInfo ? {
-        k: common_assets._imports_0,
-        l: common_vendor.p({
-          type: "arrowright",
-          size: "14",
-          color: "#666"
-        }),
-        m: common_vendor.o(goLoginPage)
-      } : {}, {
-        n: common_vendor.p({
-          type: "contact",
-          size: "16",
-          color: "#666"
-        }),
+        n: common_assets._imports_0,
         o: common_vendor.p({
           type: "arrowright",
           size: "14",
           color: "#666"
         }),
-        p: common_vendor.o(gotoMySelfArtic),
+        p: common_vendor.o(goLoginPage)
+      } : {}, {
         q: common_vendor.p({
-          type: "help",
-          size: "16",
-          color: "#666"
+          size: "35px",
+          color: "black",
+          type: "calendar"
         }),
-        r: common_vendor.p({
-          type: "arrowright",
-          size: "14",
-          color: "#666"
+        r: common_vendor.o(goCalendar),
+        s: common_vendor.p({
+          size: "35px",
+          color: "black",
+          type: "vip"
         }),
-        s: common_vendor.o(gotoFeedBack),
-        t: common_vendor.unref(store).state.userInfo
-      }, common_vendor.unref(store).state.userInfo ? {
-        v: common_vendor.o(siginOut)
-      } : {});
+        t: common_vendor.o(goVip),
+        v: common_vendor.p({
+          size: "35px",
+          color: "black",
+          type: "flag"
+        }),
+        w: common_vendor.p({
+          size: "35px",
+          color: "black",
+          type: "wallet"
+        }),
+        x: common_vendor.p({
+          type: "arrow-right"
+        }),
+        y: common_vendor.p({
+          size: "35px",
+          color: "black",
+          type: "gift"
+        }),
+        z: common_vendor.p({
+          size: "35px",
+          color: "black",
+          type: "medal"
+        }),
+        A: common_vendor.p({
+          size: "35px",
+          color: "black",
+          type: "person"
+        }),
+        B: common_vendor.p({
+          size: "35px",
+          color: "black",
+          type: "bars"
+        }),
+        C: common_vendor.p({
+          size: "35px",
+          color: "black",
+          type: "eye"
+        }),
+        D: common_vendor.o(gotoMySelfArtic),
+        E: common_vendor.p({
+          size: "35px",
+          color: "black",
+          type: "fire"
+        }),
+        F: common_vendor.p({
+          size: "35px",
+          color: "black",
+          type: "help"
+        }),
+        G: common_vendor.o(gotoFeedBack),
+        H: common_vendor.p({
+          size: "35px",
+          color: "black",
+          type: "locked"
+        }),
+        I: common_vendor.p({
+          size: "35px",
+          color: "black",
+          type: "map-pin-ellipse"
+        }),
+        J: common_vendor.p({
+          size: "35px",
+          color: "black",
+          type: "phone"
+        }),
+        K: common_vendor.p({
+          size: "35px",
+          color: "black",
+          type: "undo"
+        }),
+        L: common_vendor.p({
+          size: "35px",
+          color: "black",
+          type: "paperclip"
+        })
+      });
     };
   }
 };

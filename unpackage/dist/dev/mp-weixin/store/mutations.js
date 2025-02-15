@@ -31,6 +31,13 @@ const mutations = {
   setlabelListItem(state, data) {
     common_vendor.index.setStorageSync("labelListItem", data);
     state.labelListItem = data;
+  },
+  addArticList(state, data) {
+    state.articList[data.id] = data;
+    console.log(state.articList);
+  },
+  addSelected(state, data) {
+    state.selected.push(data);
   }
 };
 exports.mutations = mutations;

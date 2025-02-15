@@ -14,21 +14,21 @@
 			<view class="my-header-logo-box" @click="changeAvatar">
 				<image :src="store.state.userInfo.avatar" mode="aspectFill"></image>
 			</view>
-			<text @click="changeName" class="user-name">{{store.state.userInfo.author_name}}</text>
+			<text @click="changeName" class="user-name">{{
+        store.state.userInfo.author_name
+      }}</text>
 		</view>
 		<view class="my-header-info">
 			<view class="my-header-info-box">
-				<text>{{store.state.userInfo.follow_count}}</text>
+				<text>{{ store.state.userInfo.follow_count }}</text>
 				<text class="my-header-info-title">被关注</text>
 			</view>
 			<view class="my-header-info-box">
-
-				<text>{{store.state.userInfo.fans_count}}</text>
+				<text>{{ store.state.userInfo.fans_count }}</text>
 				<text class="my-header-info-title">粉丝</text>
 			</view>
 			<view class="my-header-info-box">
-
-				<text>{{store.state.userInfo.integral_count||0}}</text>
+				<text>{{ store.state.userInfo.integral_count || 0 }}</text>
 				<text class="my-header-info-title">积分</text>
 			</view>
 		</view>
@@ -52,7 +52,7 @@
 				<uni-icons size="35px" color="black" type="vip"></uni-icons>
 				<text>VIP</text>
 			</view>
-			<view class="list-text">
+			<view class="list-text" @click="goFalg">
 				<uni-icons size="35px" color="black" type="flag"></uni-icons>
 				<text>Falg</text>
 			</view>
@@ -69,14 +69,13 @@
 					<text>进入首页</text>
 					<uni-icons type="arrow-right"></uni-icons>
 				</view>
-
 			</view>
 			<view class="card">
-				<view class="list-text">
+				<view class="list-text" @click="goGift">
 					<uni-icons size="35px" color="black" type="gift"></uni-icons>
 					<text>礼物</text>
 				</view>
-				<view class="list-text">
+				<view class="list-text" @click="goGame">
 					<uni-icons size="35px" color="black" type="medal"></uni-icons>
 					<text>竞赛</text>
 				</view>
@@ -93,8 +92,6 @@
 				<text> 欢迎各位创作者入驻缔造掘金</text>
 			</view>
 		</view>
-
-
 
 		<view class="createConter">
 			<view class="toptitle">
@@ -119,11 +116,11 @@
 				</view>
 			</view>
 			<view class="card">
-				<view class="list-text">
+				<view class="list-text" @click="goTuiGuang">
 					<uni-icons size="35px" color="black" type="map-pin-ellipse"></uni-icons>
 					<text>推广</text>
 				</view>
-				<view class="list-text">
+				<view class="list-text" @click="goLianxi">
 					<uni-icons size="35px" color="black" type="phone"></uni-icons>
 					<text>联系</text>
 				</view>
@@ -146,7 +143,7 @@
 						当前版本
 						<text v-if="haveNewVersion" class="new-version-tip">(点击下载最新版本)</text>
 					</text>
-					<text class="version">{{currentVersion}}</text>
+					<text class="version">{{ currentVersion }}</text>
 				</view>
 			</view>
 			<uni-icons type="arrowright" size="14" color="#666"></uni-icons>
@@ -159,79 +156,108 @@
 <script setup>
 	import {
 		ref
-	} from 'vue';
+	} from "vue";
 	import {
 		useStore
-	} from "vuex"
+	} from "vuex";
 	import {
 		onLoad
-	} from "@dcloudio/uni-app"
+	} from "@dcloudio/uni-app";
 	import {
 		get_current_version
-	} from "@/ajax/api/interface/get_current_version.js"
+	} from "@/ajax/api/interface/get_current_version.js";
 	import {
 		AvatarUpdate
-	} from "@/ajax/api/interface/AvatarUpdate.js"
-	const currentVersion = ref('1.0.0')
-	const haveNewVersion = ref(false)
-	const store = useStore()
+	} from "@/ajax/api/interface/AvatarUpdate.js";
+	const currentVersion = ref("1.0.0");
+	const haveNewVersion = ref(false);
+	const store = useStore();
 	onLoad(() => {
 		// #ifdef APP-PLUS
 		uni.getSystemInfo({
-			success: res => {
-				if (res.platform === 'android') {
-					plus.runtime.getProperty(plus.runtime.appid, wgtinfo => {
-						currentVersion.value = wgtinfo.version
-						checkVersion()
-					})
+			success: (res) => {
+				if (res.platform === "android") {
+					plus.runtime.getProperty(plus.runtime.appid, (wgtinfo) => {
+						currentVersion.value = wgtinfo.version;
+						checkVersion();
+					});
 				}
-			}
-		})
+			},
+		});
 		// #endif
-	})
-
+	});
 
 	function goLoginPage() {
 		uni.navigateTo({
-			url: "/pages/userinfo/login/login"
-		})
+			url: "/pages/userinfo/login/login",
+		});
 	}
 
 	function goSetting() {
 		uni.navigateTo({
-			url: "/pages/setting/setting"
-		})
+			url: "/pages/setting/setting",
+		});
 	}
 
 	function goCalendar() {
 		uni.navigateTo({
-			url: "/pages/Calendar/Calendar"
-		})
+			url: "/pages/Calendar/Calendar",
+		});
 	}
 
 	function goVip() {
 		uni.navigateTo({
-			url: "/pages/VipBuy/VipBuy"
-		})
+			url: "/pages/VipBuy/VipBuy",
+		});
+	}
+
+	function goGift() {
+		uni.navigateTo({
+			url: "/pages/gift/gift",
+		});
+	}
+
+	function goGame() {
+		uni.navigateTo({
+			url: "/pages/game/game",
+		});
+	}
+
+	function goFalg() {
+		uni.navigateTo({
+			url: "/pages/Flag/Flag",
+		});
+	}
+
+	function goLianxi() {
+		uni.navigateTo({
+			url: "/pages/Lianxi/Lianxi",
+		});
+	}
+
+	function goTuiGuang() {
+		uni.navigateTo({
+			url: "/pages/TuiGuang/TuiGuang",
+		});
 	}
 
 	function siginOut() {
-		store.commit('updateUserInfo', null)
+		store.commit("updateUserInfo", null);
 		uni.navigateTo({
-			url: '/pages/index/index'
-		})
+			url: "/pages/index/index",
+		});
 	}
 
 	function gotoMySelfArtic() {
 		uni.navigateTo({
-			url: "/pages/myArticle/myArticle"
-		})
+			url: "/pages/myArticle/myArticle",
+		});
 	}
 
 	function gotoFeedBack() {
 		uni.navigateTo({
-			url: "/pages/feedback/feedback"
-		})
+			url: "/pages/feedback/feedback",
+		});
 	}
 
 	async function checkVersion() {
@@ -242,53 +268,62 @@
 		} = await get_current_version();
 		if (version > currentVersion.value) {
 			haveNewVersion.value = true;
-			downLoadLinkUrl.value = downLoadLinkUrl
+			downLoadLinkUrl.value = downLoadLinkUrl;
 		}
 	}
 
 	function get_new_version() {
 		//自动下载新版本
 		uni.showLoading({
-			title: '下载中，请稍后'
+			title: "下载中，请稍后",
 		});
-		var dtask = plus.downloader.createDownload(downLoadLinkUrl.value, {}, function(d, status) {
-			// 下载完成  
-			uni.hideLoading({})
-			if (status == 200) {
-				plus.runtime.install(plus.io.convertLocalFileSystemURL(d.filename), {}, {}, function(error) {
+		var dtask = plus.downloader.createDownload(
+			downLoadLinkUrl.value, {},
+			function(d, status) {
+				// 下载完成
+				uni.hideLoading({});
+				if (status == 200) {
+					plus.runtime.install(
+						plus.io.convertLocalFileSystemURL(d.filename), {}, {},
+						function(error) {
+							uni.showToast({
+								title: "安装失败",
+								duration: 1500,
+								icon: "none",
+							});
+						}
+					);
+				} else {
 					uni.showToast({
-						title: '安装失败',
+						title: "更新失败",
 						duration: 1500,
-						icon: 'none'
+						icon: "none",
 					});
-				})
-			} else {
-				uni.showToast({
-					title: '更新失败',
-					duration: 1500,
-					icon: 'none'
-				});
+				}
 			}
-		});
+		);
 		dtask.start();
 	}
 
 	function changeAvatar() {
 		uni.chooseImage({
 			count: 1,
-			success: async res => {
-				const filePath = await uploadFi(res.tempFiles[0].path, res.tempFiles[0].name)
+			success: async (res) => {
+				const filePath = await uploadFi(
+					res.tempFiles[0].path,
+					res.tempFiles[0].name
+				);
 				//注意，这里拿到的是文件存储的位置
 				let list = await uniCloud.getTempFileURL({
-					fileList: [filePath]
+					fileList: [filePath],
 				});
-				console.log(list.fileList[0].tempFileURL)
-				await updateAvatar(list.fileList[0].tempFileURL)
-			}
-		})
+				console.log(list.fileList[0].tempFileURL);
+				await updateAvatar(list.fileList[0].tempFileURL);
+			},
+		});
 	}
 	async function uploadFi(filePath, cloudPath) {
-		const folderName = 'avatar/'; // 确保以斜杠结束
+		const folderName = "avatar/"; // 确保以斜杠结束
 		const fileName = cloudPath; // 或者你可以根据需要重新定义文件名
 
 		// 创建完整的 cloudPath，包括文件夹名和文件名
@@ -296,28 +331,28 @@
 		const result = await uniCloud.uploadFile({
 			filePath: filePath,
 			cloudPath: fullCloudPath,
-		})
-		return result.fileID
+		});
+		return result.fileID;
 	}
 
 	async function updateAvatar(filePathId) {
 		const res = await AvatarUpdate({
 			userId: store.state.userInfo._id,
-			filePath: filePathId
-		})
+			filePath: filePathId,
+		});
 		uni.showToast({
-			title: '上传成功',
-		})
-		store.commit('updateUserInfo', {
+			title: "上传成功",
+		});
+		store.commit("updateUserInfo", {
 			...store.state.userInfo,
-			avatar: filePathId
-		})
+			avatar: filePathId,
+		});
 	}
 </script>
 
 <style scoped lang="scss">
 	page {
-		background: linear-gradient(to bottom, #f9f9f9, #F8F8F8);
+		background: linear-gradient(to bottom, #f9f9f9, #f8f8f8);
 	}
 
 	.my-header {
@@ -331,7 +366,7 @@
 			right: 0;
 			left: 0;
 			bottom: 0;
-			opacity: .3;
+			opacity: 0.3;
 			filter: blur(16rpx);
 
 			image {
@@ -452,7 +487,6 @@
 				margin-left: 9rpx;
 			}
 		}
-
 	}
 
 	.card {

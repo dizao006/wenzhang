@@ -1,31 +1,15 @@
 {
-  "hash": "f5f41c82",
+  "hash": "4cff348e",
   "configHash": "0c480d03",
-  "lockfileHash": "79785b38",
-  "browserHash": "085049a3",
+  "lockfileHash": "904e5335",
+  "browserHash": "d67853e5",
   "optimized": {
     "antd/es/list/Item": {
       "src": "../../../../../../../../../../node_modules/antd/es/list/Item.js",
       "file": "antd_es_list_Item.js",
-      "fileHash": "a8eeb29a",
-      "needsInterop": false
-    },
-    "marked": {
-      "src": "../../../../../../../../../../node_modules/marked/lib/marked.esm.js",
-      "file": "marked.js",
-      "fileHash": "1c26380b",
-      "needsInterop": false
-    },
-    "markdown-it": {
-      "src": "../../../../../../../../../../node_modules/markdown-it/index.mjs",
-      "file": "markdown-it.js",
-      "fileHash": "750c8966",
+      "fileHash": "b52eed38",
       "needsInterop": false
     }
   },
-  "chunks": {
-    "chunk-UV5CTPV7": {
-      "file": "chunk-UV5CTPV7.js"
-    }
-  }
+  "chunks": {}
 }

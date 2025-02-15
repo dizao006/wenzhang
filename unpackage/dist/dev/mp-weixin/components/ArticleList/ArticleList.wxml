@@ -1,5 +1,1 @@
-<swiper class="swiper-container data-v-6335dad8" current="{{c}}" bindchange="{{d}}">
-    <swiper-item wx:for="{{a}}" wx:for-item="item" wx:key="c" class="swiper-item data-v-6335dad8">
-        <list-item wx:if="{{b}}" class="data-v-6335dad8" bindloadMore="{{item.a}}" u-i="{{item.b}}" bind:__l="__l" u-p="{{b}}"></list-item>
-    </swiper-item>
-</swiper>
+<swiper class="swiper-container data-v-6335dad8" current="{{c}}" bindchange="{{d}}"><swiper-item wx:for="{{a}}" wx:for-item="item" wx:key="c" class="swiper-item data-v-6335dad8"><list-item wx:if="{{b}}" class="data-v-6335dad8" bindloadMore="{{item.a}}" u-i="{{item.b}}" bind:__l="__l" u-p="{{b}}"></list-item></swiper-item></swiper>

@@ -85,6 +85,12 @@
 			}
 		},
 		{
+			"path": "pages/gift/gift",
+			"style": {
+				"navigationBarTitleText": "福利兑换"
+			}
+		},
+		{
 			"path": "pages/setting/setting",
 			"style": {
 				"navigationBarTitleText": "设置"
@@ -109,10 +115,33 @@
 			}
 		},
 		{
-			"path" : "pages/guanli/guanli",
-			"style" : 
-			{
-				"navigationBarTitleText" : ""
+			"path": "pages/guanli/guanli",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/Flag/Flag",
+			"style": {
+				"navigationBarTitleText": "任务列表"
+			}
+		},
+		{
+			"path": "pages/TuiGuang/TuiGuang",
+			"style": {
+				"navigationBarTitleText": "分享推荐"
+			}
+		},
+		{
+			"path": "pages/Lianxi/Lianxi",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/game/game",
+			"style": {
+				"navigationBarTitleText": ""
 			}
 		}
 	],

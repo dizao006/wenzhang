@@ -58,12 +58,12 @@
 	});
 
 	function returnAfterView() {
-		// #ifdef H5
+
 		uni.switchTab({
 			url: "../../pages/index/index"
 		})
-		// #endif
-		uni.navigateBack() //如果刷新的话会没有历史记录栈
+
+		// uni.navigateBack() //如果刷新的话会没有历史记录栈
 	}
 
 	function getSystemInfo() {

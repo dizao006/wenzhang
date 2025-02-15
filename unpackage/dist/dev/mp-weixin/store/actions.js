@@ -1,6 +1,3 @@
 "use strict";
-const actions = {
-  add() {
-  }
-};
+const actions = {};
 exports.actions = actions;

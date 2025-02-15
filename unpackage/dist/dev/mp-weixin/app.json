@@ -9,12 +9,21 @@
     "pages/articleDetail/articleDetail",
     "pages/commentList/commentList",
     "pages/myArticle/myArticle",
-    "pages/feedback/feedback"
+    "pages/feedback/feedback",
+    "pages/createArtic/createArtic",
+    "pages/preView/preView",
+    "pages/Calendar/Calendar",
+    "pages/VipBuy/VipBuy",
+    "pages/setting/setting",
+    "pages/dataConfig/dataConfig",
+    "pages/accountConfig/accountConfig",
+    "pages/configxiaoxi/configxiaoxi",
+    "pages/guanli/guanli"
   ],
   "window": {
-    "navigationBarTextStyle": "white",
+    "navigationBarTextStyle": "black",
     "navigationBarTitleText": "旧城以西_",
-    "navigationBarBackgroundColor": "#f25037",
+    "navigationBarBackgroundColor": "#f5f5f4",
     "backgroundColor": "#F8F8F8"
   },
   "tabBar": {
@@ -33,6 +42,12 @@
         "iconPath": "static/img/follow.png",
         "selectedIconPath": "static/img/follow-active.png",
         "text": "关注"
+      },
+      {
+        "pagePath": "pages/createArtic/createArtic",
+        "iconPath": "static/img/创建 (2).png",
+        "selectedIconPath": "static/img/创建 (1).png",
+        "text": "发布文章"
       },
       {
         "pagePath": "pages/self/self",

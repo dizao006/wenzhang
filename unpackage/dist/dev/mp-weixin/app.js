@@ -13,6 +13,15 @@ if (!Math) {
   "./pages/commentList/commentList.js";
   "./pages/myArticle/myArticle.js";
   "./pages/feedback/feedback.js";
+  "./pages/createArtic/createArtic.js";
+  "./pages/preView/preView.js";
+  "./pages/Calendar/Calendar.js";
+  "./pages/VipBuy/VipBuy.js";
+  "./pages/setting/setting.js";
+  "./pages/dataConfig/dataConfig.js";
+  "./pages/accountConfig/accountConfig.js";
+  "./pages/configxiaoxi/configxiaoxi.js";
+  "./pages/guanli/guanli.js";
 }
 const _sfc_main = {
   onLaunch: function() {

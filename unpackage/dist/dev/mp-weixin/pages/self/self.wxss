@@ -26,11 +26,12 @@
 /* 添加一个flex布局的混编方法 */
 /* 全局系统样式定义 */
 page.data-v-f94a969d {
-  background-color: #f5f5f5;
+  background: linear-gradient(to bottom, #f9f9f9, #F8F8F8);
 }
 .my-header.data-v-f94a969d {
   position: relative;
-  padding-bottom: 30rpx;
+  padding-bottom: 5rpx;
+  transform: translate(0, -30rpx);
 }
 .my-header .my-header-background.data-v-f94a969d {
   position: absolute;
@@ -139,4 +140,53 @@ page.data-v-f94a969d {
   height: 100rpx;
   border-radius: 50%;
   margin-right: 40rpx;
+}
+.top.data-v-f94a969d {
+  display: flex;
+  justify-content: space-between;
+}
+.top .left.data-v-f94a969d {
+  margin-left: 10rpx;
+}
+.top .right.data-v-f94a969d {
+  margin-right: 16rpx;
+}
+.top .right .icon.data-v-f94a969d {
+  margin-left: 9rpx;
+}
+.card.data-v-f94a969d {
+  display: flex;
+  justify-content: space-around;
+  background: #f5f5f4;
+  border-radius: 5px;
+  margin: 5rpx 25rpx 20rpx 25rpx;
+}
+.card .list-text.data-v-f94a969d {
+  margin: 20rpx 10rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.createConter.data-v-f94a969d {
+  background: #f3f3f2;
+  margin: 4rpx;
+  border-radius: 5px;
+  margin: 5rpx 30rpx 20rpx 30rpx;
+}
+.createConter .toptitle.data-v-f94a969d {
+  display: flex;
+  justify-content: space-between;
+  margin: 25rpx 5rpx 20rpx 20rpx;
+  padding-top: 15rpx;
+}
+.createConter .toptitle .shouye.data-v-f94a969d {
+  margin-right: 18rpx;
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 22rpx;
+}
+.createConter .textCent.data-v-f94a969d {
+  display: flex;
+  justify-content: center;
+  padding: 8rpx;
+  color: rgba(0, 0, 0, 0.5);
 }

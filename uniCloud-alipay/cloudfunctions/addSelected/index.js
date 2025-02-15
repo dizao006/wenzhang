@@ -6,7 +6,7 @@ exports.main = async (event, context) => {
 		userId,
 		data
 	} = event
-	console.log(userId, data)
+	// console.log(userId, data)
 	const user = await db.collection("user").doc(userId).get()
 	const selected = user.data[0].selected //收藏文章的数组
 	const newSelected = [...selected, data]
