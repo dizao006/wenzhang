@@ -143,6 +143,15 @@
 			"style": {
 				"navigationBarTitleText": ""
 			}
+		},
+		{
+			"path": "pages/game2/game2",
+			"style": {
+				"navigationBarTitleText": "飞机大战",
+				"app-plus": {
+					"titleNView": false
+				}
+			}
 		}
 	],
 	"globalStyle": {

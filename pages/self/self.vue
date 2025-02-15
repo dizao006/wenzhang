@@ -124,7 +124,7 @@
 					<uni-icons size="35px" color="black" type="phone"></uni-icons>
 					<text>联系</text>
 				</view>
-				<view class="list-text">
+				<view class="list-text" @click="goGame2">
 					<uni-icons size="35px" color="black" type="undo"></uni-icons>
 					<text>分析</text>
 				</view>
@@ -226,6 +226,12 @@
 	function goFalg() {
 		uni.navigateTo({
 			url: "/pages/Flag/Flag",
+		});
+	}
+
+	function goGame2() {
+		uni.navigateTo({
+			url: "/pages/game2/game2",
 		});
 	}
 
