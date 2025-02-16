@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "签到页",
+  "usingComponents": {
+    "uni-calendar": "../../uni_modules/uni-calendar/components/uni-calendar/uni-calendar",
+    "uni-icons": "../../uni_modules/uni-icons/components/uni-icons/uni-icons"
+  }
+}

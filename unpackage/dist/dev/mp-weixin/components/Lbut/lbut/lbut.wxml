@@ -1,0 +1,1 @@
+<view class="page-main"><liu-super-slide wx:if="{{a}}" u-i="22148330-0" bind:__l="__l" u-p="{{a}}"></liu-super-slide></view>

@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "liu-super-slide": "../../../uni_modules/liu-super-slide/components/liu-super-slide/liu-super-slide"
+  }
+}

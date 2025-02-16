@@ -1,13 +1,20 @@
 <template>
-	<view>
-		<h1>编辑资料</h1>
+	<view class="body">
+		<set-userinfo :userInfo="store.state.userInfo"></set-userinfo>
 	</view>
 </template>
 
 <script setup>
-
+	import {
+		ref
+	} from "vue";
+	import setUserinfo from "../../components/set-userinfo/set-userinfo.vue"
+	import {
+		useStore
+	} from "vuex"
+	const store = useStore();
 </script>
 
-<style>
+<style lang="scss" scoped>
 
 </style>

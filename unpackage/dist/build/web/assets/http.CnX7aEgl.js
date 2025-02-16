@@ -1,0 +1,1 @@
+import{X as a,Y as e,Z as s,x as n}from"./index-hP099HiM.js";const t=({name:t,data:o={}})=>new Promise(((i,c)=>{a({title:"加载中..."}),e.callFunction({name:t,data:o,success({result:a}){s(),0===a.code?i(a.data):(n({icon:"none",title:a.msg||"未知错误"}),c(new Error(a.msg||"未知错误")))},fail(a){s(),n({icon:"none",title:a.message||"请求失败"}),c(a)}})}));export{t as a};

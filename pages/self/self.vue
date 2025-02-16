@@ -79,7 +79,7 @@
 					<uni-icons size="35px" color="black" type="medal"></uni-icons>
 					<text>竞赛</text>
 				</view>
-				<view class="list-text">
+				<view class="list-text" @click="goUser">
 					<uni-icons size="35px" color="black" type="person"></uni-icons>
 					<text>个人</text>
 				</view>
@@ -208,6 +208,12 @@
 	function goVip() {
 		uni.navigateTo({
 			url: "/pages/VipBuy/VipBuy",
+		});
+	}
+
+	function goUser() {
+		uni.navigateTo({
+			url: "/pages/InfoUser/InfoUser",
 		});
 	}
 

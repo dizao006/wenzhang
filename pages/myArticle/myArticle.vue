@@ -16,15 +16,16 @@
 	import {
 		useIsLoggedIn
 	} from "@/common/isLogin.js"
+	const {
+		checkLogin
+	} = useIsLoggedIn()
 	import {
 		useStore
 	} from "vuex"
 	import {
 		getArticleMyList
 	} from "@/ajax/api/interface/getArticleMyList.js"
-	const {
-		checkLogin
-	} = useIsLoggedIn()
+
 
 	const store = useStore()
 	const articleList = ref({})

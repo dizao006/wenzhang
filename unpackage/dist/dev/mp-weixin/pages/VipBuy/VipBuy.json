@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "VIP详细",
+  "usingComponents": {
+    "uni-card": "../../uni_modules/uni-card/components/uni-card/uni-card",
+    "uni-icons": "../../uni_modules/uni-icons/components/uni-icons/uni-icons",
+    "lbut": "../../components/Lbut/lbut/lbut",
+    "f-a-q-vue": "../../components/FAQ/FAQ"
+  }
+}

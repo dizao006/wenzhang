@@ -152,6 +152,13 @@
 					"titleNView": false
 				}
 			}
+		},
+		{
+			"path" : "pages/InfoUser/InfoUser",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
 		}
 	],
 	"globalStyle": {
