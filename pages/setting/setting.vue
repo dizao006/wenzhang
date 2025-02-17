@@ -6,20 +6,17 @@
 					<uni-list-item showArrow title="编辑资料" />
 				</view>
 				<view @click="goZhanghu"> <uni-list-item showArrow title="账号设置" /></view>
-				<view @click="goXiaoxi"> <uni-list-item showArrow title="消息设置" /></view>
 			</uni-list>
 			<uni-list class="listCn">
-				<view @click="goGuanli"> <uni-list-item showArrow title="屏蔽管理" /></view>
-				<view @click="goGexi"> <uni-list-item showArrow title="个性化推荐" /></view>
 				<view @click="goSun"> <uni-list-item title="深色模式" /></view>
 				<view class="switch">
 					<switch @change="changeSun" checked color="#FFCC33" style="transform:scale(0.9)" />
 				</view>
-				<view> <uni-list-item showArrow title="缓存处理" @click="goHuan" /></view>
+				<view @click="goHuan"> <uni-list-item showArrow :title="queueSize" /></view>
 			</uni-list>
 			<uni-list class="listCn">
 				<view> <uni-list-item rightText="V1.0.0" showArrow title="当前版本" /></view>
-				<view> <uni-list-item showArrow title="关于" /></view>
+				<view @click="goAbout"> <uni-list-item showArrow title="关于" /></view>
 			</uni-list>
 		</uni-section>
 		<view class="btn">
@@ -29,6 +26,7 @@
 </template>
 <script setup>
 	import {
+		onMounted,
 		ref
 	} from "vue";
 	import {
@@ -37,6 +35,7 @@
 
 	const status = ref(true)
 	const store = useStore()
+	const queueSize = ref("缓存大小0MB")
 
 	function siginOut() {
 		store.commit('updateUserInfo', null)
@@ -46,13 +45,20 @@
 	}
 
 	function changeSun() {
-		console.log("测试黑暗模式")
+		let body = document.querySelector("body")
+		body.style.backgroundClor
 	}
 
 	function goXiangxi() {
 		console.log("test")
 		uni.navigateTo({
 			url: "/pages/dataConfig/dataConfig"
+		})
+	}
+
+	function goAbout() {
+		uni.navigateTo({
+			url: "/pages/Lianxi/Lianxi"
 		})
 	}
 
@@ -75,8 +81,26 @@
 	}
 
 	function goHuan() {
-		// 清除缓存
+		console.log("sss")
+		try {
+			uni.clearStorageSync();
+			uni.showToast({
+				title: "缓存清除成功",
+				icon: 'success'
+			})
+		} catch (err) {
+			console.log('缓存同步清除失败：', err);
+		}
 	}
+	onMounted(() => {
+		uni.getStorageInfo({
+			success: (res) => {
+				// 将字节转换为MB并保留两位小数
+				queueSize.value =
+					`缓存大小                        ${(res.currentSize / (1024 * 1024)).toFixed(2)}MB`;
+			}
+		});
+	})
 </script>
 
 <style lang="scss">

@@ -135,13 +135,13 @@
 		{
 			"path": "pages/Lianxi/Lianxi",
 			"style": {
-				"navigationBarTitleText": ""
+				"navigationBarTitleText": "call~我吧"
 			}
 		},
 		{
 			"path": "pages/game/game",
 			"style": {
-				"navigationBarTitleText": ""
+				"navigationBarTitleText": "2048游戏"
 			}
 		},
 		{
@@ -154,7 +154,19 @@
 			}
 		},
 		{
-			"path" : "pages/InfoUser/InfoUser",
+			"path": "pages/InfoUser/InfoUser",
+			"style": {
+				"navigationBarTitleText": "用户信息"
+			}
+		},
+		{
+			"path": "pages/AccountUser/AccountUser",
+			"style": {
+				"navigationBarTitleText": "账户信息"
+			}
+		},
+		{
+			"path" : "pages/Boke/Boke",
 			"style" : 
 			{
 				"navigationBarTitleText" : ""

@@ -1,156 +1,166 @@
 <template>
-	<!-- 当用户为登录状态时进行显示 -->
-	<view class="top">
-		<view class="left">
-			<uni-icons type="scan" size="25"></uni-icons>
+	<view v-if="isLocked" class="lock-screen">
+		<view style="display: flex; flex-direction: column;">
+			<text>屏幕已锁定</text>
+			<button style="margin-top: 20px;" @click="unlock">解锁</button>
 		</view>
-		<view class="right">
-			<uni-icons class="icon" type="notification" size="25"></uni-icons>
-			<uni-icons class="icon" type="gear" size="25" @click="goSetting"></uni-icons>
-		</view>
+
 	</view>
-	<view v-if="store.state.userInfo" class="my-header">
-		<view class="my-header-logo">
-			<view class="my-header-logo-box" @click="changeAvatar">
-				<image :src="store.state.userInfo.avatar" mode="aspectFill"></image>
+	<view else>
+		<view class="top">
+			<view class="left">
+				<uni-icons type="scan" size="25"></uni-icons>
 			</view>
-			<text @click="changeName" class="user-name">{{
+			<view class="right">
+				<uni-icons class="icon" type="notification" size="25"></uni-icons>
+				<uni-icons class="icon" type="gear" size="25" @click="goSetting"></uni-icons>
+			</view>
+		</view>
+		<view v-if="store.state.userInfo" class="my-header">
+			<view class="my-header-logo">
+				<view class="my-header-logo-box" @click="changeAvatar">
+					<image :src="store.state.userInfo.avatar" mode="aspectFill"></image>
+				</view>
+				<text @click="changeName" class="user-name">{{
         store.state.userInfo.author_name
       }}</text>
+			</view>
+			<view class="my-header-info">
+				<view class="my-header-info-box">
+					<text>{{ store.state.userInfo.follow_count }}</text>
+					<text class="my-header-info-title">被关注</text>
+				</view>
+				<view class="my-header-info-box">
+					<text>{{ store.state.userInfo.fans_count }}</text>
+					<text class="my-header-info-title">粉丝</text>
+				</view>
+				<view class="my-header-info-box">
+					<text>{{ store.state.userInfo.integral_count || 0 }}</text>
+					<text class="my-header-info-title">积分</text>
+				</view>
+			</view>
 		</view>
-		<view class="my-header-info">
-			<view class="my-header-info-box">
-				<text>{{ store.state.userInfo.follow_count }}</text>
-				<text class="my-header-info-title">被关注</text>
+
+		<view class="my-content">
+			<view v-if="!store.state.userInfo" class="my-content-list" @click="goLoginPage">
+				<view class="my-content-list-title">
+					<image class="company-logo" src="../../static/img/logo.jpeg" mode="aspectFill"></image>
+					<text>HI，您尚未登录,请点击登录</text>
+				</view>
+				<uni-icons type="arrowright" size="14" color="#666"></uni-icons>
 			</view>
-			<view class="my-header-info-box">
-				<text>{{ store.state.userInfo.fans_count }}</text>
-				<text class="my-header-info-title">粉丝</text>
+
+			<view class="card">
+				<view class="list-text" @click="goCalendar">
+					<uni-icons size="35px" color="black" type="calendar"></uni-icons>
+					<text>签到</text>
+				</view>
+				<view class="list-text" @click="goVip">
+					<uni-icons size="35px" color="black" type="vip"></uni-icons>
+					<text>VIP</text>
+				</view>
+				<view class="list-text" @click="goFalg">
+					<uni-icons size="35px" color="black" type="flag"></uni-icons>
+					<text>Falg</text>
+				</view>
+				<view class="list-text" @click="goAccount">
+					<uni-icons size="35px" color="black" type="wallet"></uni-icons>
+					<text>账户</text>
+				</view>
 			</view>
-			<view class="my-header-info-box">
-				<text>{{ store.state.userInfo.integral_count || 0 }}</text>
-				<text class="my-header-info-title">积分</text>
+
+			<view class="createConter">
+				<view class="toptitle">
+					<text>创作者中心</text>
+					<view class="shouye">
+						<text>进入首页</text>
+						<uni-icons type="arrow-right"></uni-icons>
+					</view>
+				</view>
+				<view class="card">
+					<view class="list-text" @click="goGift">
+						<uni-icons size="35px" color="black" type="gift"></uni-icons>
+						<text>礼物</text>
+					</view>
+					<view class="list-text" @click="goGame">
+						<uni-icons size="35px" color="black" type="medal"></uni-icons>
+						<text>竞赛</text>
+					</view>
+					<view class="list-text" @click="goUser">
+						<uni-icons size="35px" color="black" type="person"></uni-icons>
+						<text>个人</text>
+					</view>
+					<view class="list-text">
+						<uni-icons size="35px" color="black" type="bars"></uni-icons>
+						<text>草稿箱</text>
+					</view>
+				</view>
+				<view class="textCent">
+					<text> 欢迎各位创作者入驻缔造掘金</text>
+				</view>
 			</view>
+
+			<view class="createConter">
+				<view class="toptitle">
+					<text>常用功能</text>
+				</view>
+				<view class="card">
+					<view class="list-text" @click="gotoMySelfArtic">
+						<uni-icons size="35px" color="black" type="eye"></uni-icons>
+						<text>文章</text>
+					</view>
+					<view class="list-text">
+						<uni-icons size="35px" color="black" type="fire"></uni-icons>
+						<text>沸点</text>
+					</view>
+					<view class="list-text" @click="gotoFeedBack">
+						<uni-icons size="35px" color="black" type="help"></uni-icons>
+						<text>反馈</text>
+					</view>
+					<view class="list-text" @click="suoping">
+						<uni-icons size="35px" color="black" type="locked"></uni-icons>
+						<text>锁屏</text>
+					</view>
+				</view>
+				<view class="card">
+					<view class="list-text" @click="goTuiGuang">
+						<uni-icons size="35px" color="black" type="map-pin-ellipse"></uni-icons>
+						<text>推广</text>
+					</view>
+					<view class="list-text" @click="goLianxi">
+						<uni-icons size="35px" color="black" type="phone"></uni-icons>
+						<text>联系</text>
+					</view>
+					<view class="list-text" @click="goGame2">
+						<uni-icons size="35px" color="black" type="undo"></uni-icons>
+						<text>机战</text>
+					</view>
+					<view class="list-text" @click="goBk">
+						<uni-icons size="35px" color="black" type="paperclip"></uni-icons>
+						<text>博客</text>
+					</view>
+				</view>
+			</view>
+			<!-- #ifdef APP-PLUS -->
+			<view class="my-content-list" @click="haveNewVersion && get_new_version">
+				<view class="my-content-list-title">
+					<uni-icons class="icons" type="paperclip" size="16" color="#666"></uni-icons>
+					<view class="version-container">
+						<text>
+							当前版本
+							<text v-if="haveNewVersion" class="new-version-tip">(点击下载最新版本)</text>
+						</text>
+						<text class="version">{{ currentVersion }}</text>
+					</view>
+				</view>
+				<uni-icons type="arrowright" size="14" color="#666"></uni-icons>
+			</view>
+			<!-- #endif -->
+			<!-- <button v-if="store.state.userInfo" type="warn" class="sign-out" @click="siginOut">退出</button> -->
 		</view>
 	</view>
+	<!-- 当用户为登录状态时进行显示 -->
 
-	<view class="my-content">
-		<view v-if="!store.state.userInfo" class="my-content-list" @click="goLoginPage">
-			<view class="my-content-list-title">
-				<image class="company-logo" src="../../static/img/logo.jpeg" mode="aspectFill"></image>
-				<text>HI，您尚未登录,请点击登录</text>
-			</view>
-			<uni-icons type="arrowright" size="14" color="#666"></uni-icons>
-		</view>
-
-		<view class="card">
-			<view class="list-text" @click="goCalendar">
-				<uni-icons size="35px" color="black" type="calendar"></uni-icons>
-				<text>签到</text>
-			</view>
-			<view class="list-text" @click="goVip">
-				<uni-icons size="35px" color="black" type="vip"></uni-icons>
-				<text>VIP</text>
-			</view>
-			<view class="list-text" @click="goFalg">
-				<uni-icons size="35px" color="black" type="flag"></uni-icons>
-				<text>Falg</text>
-			</view>
-			<view class="list-text">
-				<uni-icons size="35px" color="black" type="wallet"></uni-icons>
-				<text>账户</text>
-			</view>
-		</view>
-
-		<view class="createConter">
-			<view class="toptitle">
-				<text>创作者中心</text>
-				<view class="shouye">
-					<text>进入首页</text>
-					<uni-icons type="arrow-right"></uni-icons>
-				</view>
-			</view>
-			<view class="card">
-				<view class="list-text" @click="goGift">
-					<uni-icons size="35px" color="black" type="gift"></uni-icons>
-					<text>礼物</text>
-				</view>
-				<view class="list-text" @click="goGame">
-					<uni-icons size="35px" color="black" type="medal"></uni-icons>
-					<text>竞赛</text>
-				</view>
-				<view class="list-text" @click="goUser">
-					<uni-icons size="35px" color="black" type="person"></uni-icons>
-					<text>个人</text>
-				</view>
-				<view class="list-text">
-					<uni-icons size="35px" color="black" type="bars"></uni-icons>
-					<text>草稿箱</text>
-				</view>
-			</view>
-			<view class="textCent">
-				<text> 欢迎各位创作者入驻缔造掘金</text>
-			</view>
-		</view>
-
-		<view class="createConter">
-			<view class="toptitle">
-				<text>常用功能</text>
-			</view>
-			<view class="card">
-				<view class="list-text" @click="gotoMySelfArtic">
-					<uni-icons size="35px" color="black" type="eye"></uni-icons>
-					<text>文章</text>
-				</view>
-				<view class="list-text">
-					<uni-icons size="35px" color="black" type="fire"></uni-icons>
-					<text>沸点</text>
-				</view>
-				<view class="list-text" @click="gotoFeedBack">
-					<uni-icons size="35px" color="black" type="help"></uni-icons>
-					<text>反馈</text>
-				</view>
-				<view class="list-text">
-					<uni-icons size="35px" color="black" type="locked"></uni-icons>
-					<text>锁屏</text>
-				</view>
-			</view>
-			<view class="card">
-				<view class="list-text" @click="goTuiGuang">
-					<uni-icons size="35px" color="black" type="map-pin-ellipse"></uni-icons>
-					<text>推广</text>
-				</view>
-				<view class="list-text" @click="goLianxi">
-					<uni-icons size="35px" color="black" type="phone"></uni-icons>
-					<text>联系</text>
-				</view>
-				<view class="list-text" @click="goGame2">
-					<uni-icons size="35px" color="black" type="undo"></uni-icons>
-					<text>分析</text>
-				</view>
-				<view class="list-text">
-					<uni-icons size="35px" color="black" type="paperclip"></uni-icons>
-					<text>记录</text>
-				</view>
-			</view>
-		</view>
-		<!-- #ifdef APP-PLUS -->
-		<view class="my-content-list" @click="haveNewVersion && get_new_version">
-			<view class="my-content-list-title">
-				<uni-icons class="icons" type="paperclip" size="16" color="#666"></uni-icons>
-				<view class="version-container">
-					<text>
-						当前版本
-						<text v-if="haveNewVersion" class="new-version-tip">(点击下载最新版本)</text>
-					</text>
-					<text class="version">{{ currentVersion }}</text>
-				</view>
-			</view>
-			<uni-icons type="arrowright" size="14" color="#666"></uni-icons>
-		</view>
-		<!-- #endif -->
-		<!-- <button v-if="store.state.userInfo" type="warn" class="sign-out" @click="siginOut">退出</button> -->
-	</view>
 </template>
 
 <script setup>
@@ -172,6 +182,9 @@
 	const currentVersion = ref("1.0.0");
 	const haveNewVersion = ref(false);
 	const store = useStore();
+	let isLocked = ref(false)
+
+
 	onLoad(() => {
 		// #ifdef APP-PLUS
 		uni.getSystemInfo({
@@ -199,10 +212,30 @@
 		});
 	}
 
+	function goBk() {
+		uni.navigateTo({
+			url: "/pages/Boke/Boke",
+		});
+	}
+
+	function goAccount() {
+		uni.navigateTo({
+			url: "/pages/AccountUser/AccountUser",
+		});
+	}
+
 	function goCalendar() {
 		uni.navigateTo({
 			url: "/pages/Calendar/Calendar",
 		});
+	}
+
+	function unlock() {
+		isLocked.value = false
+	}
+
+	function suoping() {
+		isLocked.value = true
 	}
 
 	function goVip() {
@@ -329,7 +362,6 @@
 				let list = await uniCloud.getTempFileURL({
 					fileList: [filePath],
 				});
-				console.log(list.fileList[0].tempFileURL);
 				await updateAvatar(list.fileList[0].tempFileURL);
 			},
 		});
@@ -543,5 +575,20 @@
 			padding: 8rpx;
 			color: rgba(0, 0, 0, 0.5);
 		}
+	}
+
+	.lock-screen {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.8);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		color: white;
+		font-size: 24px;
+		z-index: 9999;
 	}
 </style>

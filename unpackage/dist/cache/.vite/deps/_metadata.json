@@ -2,14 +2,24 @@
   "hash": "4cff348e",
   "configHash": "0c480d03",
   "lockfileHash": "904e5335",
-  "browserHash": "d67853e5",
+  "browserHash": "50d49e7a",
   "optimized": {
     "antd/es/list/Item": {
       "src": "../../../../../../../../../../node_modules/antd/es/list/Item.js",
       "file": "antd_es_list_Item.js",
-      "fileHash": "b52eed38",
+      "fileHash": "69232bbc",
+      "needsInterop": false
+    },
+    "markdown-it": {
+      "src": "../../../../../../../../../../node_modules/markdown-it/index.mjs",
+      "file": "markdown-it.js",
+      "fileHash": "ee01ccb8",
       "needsInterop": false
     }
   },
-  "chunks": {}
+  "chunks": {
+    "chunk-ZS7NZCD4": {
+      "file": "chunk-ZS7NZCD4.js"
+    }
+  }
 }

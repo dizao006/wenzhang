@@ -3,13 +3,12 @@
 		<view class="set-userinfo">
 			<view class="set-userinfo-list">
 				<view class="set-userinfo-list-left">头像</view>
-				<view class="set-userinfo-list-right" @click="changeimage">
+				<view class="set-userinfo-list-right">
 					<view class="set-userinfo-list-right-pic">
 						<image :src="userpic" mode="aspectFill" lazy-load></image>
 					</view>
-					<view class="set-userinfo-list-right-icon icon iconfont">&#xe668;</view>
+					<!-- <view class="set-userinfo-list-right-icon icon iconfont">&#xe668;</view> -->
 				</view>
-
 			</view>
 			<view class="set-userinfo-list">
 				<view class="set-userinfo-list-left">昵称</view>
@@ -17,17 +16,15 @@
 					<input class="set-userinfo-list-right-name" type="text" v-model="author_name" />
 					<view class="set-userinfo-list-right-icon icon iconfont">&#xe668;</view>
 				</view>
-
 			</view>
 			<view class="set-userinfo-list">
 				<view class="set-userinfo-list-left">性别</view>
 				<view class="set-userinfo-list-right" @click="changeOne('sex')">
 					<view class="set-userinfo-list-right-name">
-						{{sex}}
+						{{ sex }}
 					</view>
 					<view class="set-userinfo-list-right-icon icon iconfont">&#xe668;</view>
 				</view>
-
 			</view>
 			<view class="set-userinfo-list">
 				<view class="set-userinfo-list-left">个性签名</view>
@@ -51,22 +48,25 @@
 </template>
 
 <script>
-	let sex = ['不限', '男', '女'];
+	let sex = ["不限", "男", "女"];
 	import mpvueCityPicker from "./mpvue-citypicker/mpvueCityPicker.vue";
+	import {
+		updateUserInfo
+	} from "@/ajax/api/interface/updateUserInfo.js"
 
 	export default {
-		props: ['userInfo'],
+		props: ["userInfo"],
 		components: {
-			mpvueCityPicker
+			mpvueCityPicker,
 		},
 		data() {
 			return {
-				author_name: '',
-				userpic: '',
-				sex: '',
-				professional: '',
-				explain: '',
-				pickerValueDefault: [0, 2, 1]
+				author_name: "",
+				userpic: "",
+				sex: "",
+				professional: "",
+				explain: "",
+				pickerValueDefault: [0, 2, 1],
 			};
 		},
 		created() {
@@ -87,51 +87,66 @@
 			changeimage() {
 				uni.chooseImage({
 					count: 1,
-					sizeType: ['compressed'],
+					sizeType: ["compressed"],
 					success: (res) => {
 						console.log(JSON.stringify(res.tempFilePaths));
 						this.userpic = res.tempFilePaths;
-					}
+					},
 				});
-
 			},
 			// 单列选择
 			changeOne(val) {
 				let arr = [];
 				switch (val) {
-					case 'sex':
+					case "sex":
 						arr = sex;
 						break;
 						// 这里需要定义qg和job，假设先初始化为空数组
-					case 'qg':
+					case "qg":
 						arr = [];
 						break;
-					case 'job':
+					case "job":
 						arr = [];
 						break;
 				}
 				uni.showActionSheet({
 					itemList: arr,
 					success: (res) => {
-						console.log('选中了第' + (res.tapIndex + 1) + '个按钮');
 						switch (val) {
-							case 'sex':
+							case "sex":
 								this.sex = arr[res.tapIndex];
 								break;
-							case 'qg':
+							case "qg":
 								this.qg = arr[res.tapIndex];
 								break;
-							case 'job':
+							case "job":
 								this.job = arr[res.tapIndex];
 								break;
 						}
-					}
+					},
 				});
 			},
-			submit() {
-
-			}
-		}
+			async submit() {
+				const userInfo = {
+					author_name: this.author_name,
+					avatar: this.userpic,
+					gender: this.sex,
+					professional: this.professional,
+					explain: this.explain,
+				};
+				let res = await updateUserInfo({
+					userInfo,
+					id: this.userInfo._id
+				})
+				if (res.code == 0) {
+					uni.showToast({
+						title: res.msg,
+						icon: 'success'
+					})
+					this.$emit('updateStore', res.result)
+				}
+			},
+		},
 	};
 </script>
 
@@ -142,14 +157,14 @@
 		margin: 20rpx 25rpx;
 
 		.set-userinfo {
-			border-top: 1rpx solid #F2F2F2;
+			border-top: 1rpx solid #f2f2f2;
 
 			.set-userinfo-list {
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
 				padding: 10rpx 25rpx;
-				border-bottom: 1rpx solid #F2F2F2;
+				border-bottom: 1rpx solid #f2f2f2;
 
 				.set-userinfo-list-left {
 					font-size: 30rpx;

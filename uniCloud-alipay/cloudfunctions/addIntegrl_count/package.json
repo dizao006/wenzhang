@@ -1,0 +1,7 @@
+{
+  "name": "addIntegrl_count",
+  "dependencies": {},
+  "extensions": {
+    "uni-cloud-jql": {}
+  }
+}

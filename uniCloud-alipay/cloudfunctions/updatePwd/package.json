@@ -1,0 +1,7 @@
+{
+  "name": "updatePwd",
+  "dependencies": {},
+  "extensions": {
+    "uni-cloud-jql": {}
+  }
+}

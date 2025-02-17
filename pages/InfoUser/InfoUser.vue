@@ -11,8 +11,10 @@
 				</view>
 			</view>
 			<view class="info-box">
+				<text class="job-title">性别：{{userInfo.gender}}</text>
 				<text class="job-title">@{{userInfo.professional}}</text>
 				<text class="signature">{{userInfo.explain}}</text>
+
 			</view>
 			<view class="edit-btn-box" @click="editProfile">
 				<button class="edit-btn">编辑</button>
@@ -123,7 +125,7 @@
 		align-items: center;
 		justify-content: center;
 		flex-direction: column;
-		// flex: 1;
+		margin-top: -30px;
 	}
 
 	.nickname {
