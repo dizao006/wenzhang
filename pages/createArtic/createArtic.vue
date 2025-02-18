@@ -6,46 +6,48 @@
 			<text @click="save">下一步</text>
 		</view>
 		<input type="text" v-model="title" placeholder="请输入标题" />
-		<view class="line">
-
-		</view>
-		<textarea v-model="content" placeholder="请输入正文"></textarea>
+		<view class="line"></view>
+		<!-- Markdown 编辑器容器 -->
+		<MdEditor v-model="content" height="calc(100vh - 150px)" ref="editorRef" />
 	</view>
 </template>
 
 <script setup>
 	import {
 		ref,
-		watch
+		onMounted
 	} from 'vue';
 	import {
 		generateArticleId
-	} from "@/common/uuid.js"
+	} from "@/common/uuid.js";
 	import {
 		useStore
-	} from "vuex"
-	import MarkdownIt from 'markdown-it';
-	const store = useStore()
+	} from "vuex";
+	import MdEditor from 'md-editor-v3';
+	import 'md-editor-v3/lib/style.css';
+
+	const store = useStore();
+
 	// 标题
 	const title = ref('');
 	// 正文内容
 	const content = ref('');
-	// 是否处于预览状态
-	const isPreview = ref(false);
-	// 预览文件路径
-	const previewUrl = ref('');
-	const ht = ref('')
-	let articId = generateArticleId()
+	// Markdown 编辑器实例
+	const editorRef = ref(null);
+
+	// 生成文章 ID
+	let articId = generateArticleId();
+
 	// 返回方法
 	const goBack = async () => {
 		uni.showToast({
 			title: '自动保存成功',
 			icon: 'success'
-		})
-		await save()
-		content.value = ""
-		title.value = ""
-		articId = generateArticleId()
+		});
+		await save();
+		content.value = "";
+		title.value = "";
+		articId = generateArticleId();
 		uni.switchTab({
 			url: '/pages/index/index'
 		});
@@ -53,22 +55,20 @@
 
 	// 预览方法
 	const preview = async () => {
-		await save()
+		await save();
 		uni.navigateTo({
-			url: `/pages/preView/preView?id=${articId}`,
+			url: `/pages/preView/preView?id=${articId}&title=${encodeURIComponent(title.value)}`,
 		});
 	};
 
 	// 保存方法
 	const save = () => {
-		const md = new MarkdownIt();
-		const html = md.render(content.value);
 		const data = {
 			id: articId,
 			title: title.value,
-			html: html
-		}
-		store.commit('addArticList', data)
+			md: content.value
+		};
+		store.commit('addArticList', data);
 	};
 </script>
 
@@ -92,17 +92,12 @@
 			border-radius: 5px;
 		}
 
-		textarea {
-			height: 100vh;
+		.editor-container {
+			height: calc(100vh - 150px); // 确保编辑器高度足够
 			width: 100%;
 			margin-bottom: 10px;
 			padding: 5px;
 			border-radius: 5px;
-		}
-
-		.preview-container {
-			flex: 1;
-			width: 100%;
 		}
 
 		.line {

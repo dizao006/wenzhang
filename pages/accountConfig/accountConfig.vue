@@ -62,10 +62,6 @@
 					this.showErr('密码长度为6~12位！')
 					return;
 				}
-				console.log({
-					pwd: this.newPwd,
-					id: this.store.state.userInfo._id
-				})
 				let res = await updatePwd({
 					pwd: this.newPwd,
 					id: this.store.state.userInfo._id
@@ -79,7 +75,6 @@
 				this.store.commit('updateUserInfo', res.result)
 				uni.switchTab({
 					url: "/pages/self/self",
-
 				})
 			}
 		}

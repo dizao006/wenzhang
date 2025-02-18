@@ -15,5 +15,10 @@
             "前端组件",
             "通用组件"
         ]
+    },
+    "dependencies": {
+        "marked": "^4.0.0",
+        "md-editor-v3": "^5.0.0",
+        "wangeditor": "^4.7.15"
     }
 }
