@@ -61,7 +61,6 @@
 	import {
 		onLoad
 	} from "@dcloudio/uni-app"
-	import TurndownService from 'turndown';
 	import htmlToMd from 'html-to-md';
 	const store = useStore();
 
@@ -78,7 +77,6 @@
 
 	// 文章 ID，初始化为空
 	const articleId = ref("");
-	const turndownService = new TurndownService();
 
 	// 标签列表
 	const tagList = ref([
