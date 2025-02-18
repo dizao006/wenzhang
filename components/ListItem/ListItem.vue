@@ -23,7 +23,6 @@
 	import {
 		get_article_list
 	} from "../../ajax/api/interface/home.js"
-
 	let props = defineProps(['articleList', 'loadData', "isLoadMore", 'saveSearchHistory'])
 	let emit = defineEmits(['loadMore'])
 	let lo = ref('loading')

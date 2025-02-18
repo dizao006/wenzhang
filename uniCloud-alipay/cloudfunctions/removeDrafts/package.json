@@ -1,0 +1,7 @@
+{
+  "name": "removeDrafts",
+  "dependencies": {},
+  "extensions": {
+    "uni-cloud-jql": {}
+  }
+}

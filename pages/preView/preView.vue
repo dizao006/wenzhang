@@ -8,27 +8,24 @@
 	import {
 		ref,
 		onMounted
-	} from 'vue';
+	} from "vue";
 	import {
 		useStore
-	} from 'vuex';
+	} from "vuex";
 
 	const store = useStore();
-	const htmlContent = ref('');
-
-	// 获取路由参数
-	const route = useRoute();
-	const articleId = route.query.id;
+	const htmlContent = ref("");
 
 	// 加载文章内容
 	onMounted(() => {
-		const article = store.state.articList.find(item => item.id === articleId);
+		const articleId = uni.getStorageSync("currentArticleId"); // 获取存储的文章 ID
+		const article = store.state.articList.find((item) => item.id === articleId);
 		if (article) {
 			htmlContent.value = article.html;
 		} else {
 			uni.showToast({
-				title: '文章未找到',
-				icon: 'none'
+				title: "文章未找到",
+				icon: "none",
 			});
 		}
 	});

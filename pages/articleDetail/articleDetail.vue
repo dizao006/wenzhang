@@ -59,7 +59,6 @@
 	import {
 		onLoad
 	} from "@dcloudio/uni-app";
-
 	import {
 		marked
 	} from 'marked';
@@ -134,7 +133,10 @@
 	}
 
 	onLoad(async (options) => {
-		const res = JSON.parse(JSON.stringify(options.options));
+		const encodedData = options.options;
+		const decodedData = decodeURIComponent(encodedData);
+		// 将 JSON 字符串转换为对象
+		let res = JSON.parse(decodedData);
 		let data = await getAarticleDetatil({
 			articleId: res._id
 		});

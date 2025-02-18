@@ -4,7 +4,7 @@
 		<view v-if="props.list.mode === 'base'" class="list-card" @click="goArticleDetail">
 			<view class="list-card-img">
 				<image :src="
-            props.list.cover[0] ? props.list.cover[0] : '/static/img/logo.jpeg'
+            props.list.cover[0] ? props.list.cover[0] : '/static/img/测试.jpg'
           " mode="aspectFill">
 				</image>
 			</view>
@@ -83,10 +83,10 @@
 			browse_count,
 		};
 		emit("saveSearchHistory");
+		const encodedData = encodeURIComponent(JSON.stringify(parms));
 		uni.navigateTo({
-			url: `/pages/articleDetail/articleDetail?options=${JSON.stringify(parms)}`,
+			url: `/pages/articleDetail/articleDetail?options=${encodedData}`,
 		});
-
 	}
 </script>
 

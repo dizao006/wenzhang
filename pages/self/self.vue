@@ -90,7 +90,7 @@
 						<uni-icons size="35px" color="black" type="person"></uni-icons>
 						<text>个人</text>
 					</view>
-					<view class="list-text">
+					<view class="list-text" @click="goDrafts">
 						<uni-icons size="35px" color="black" type="bars"></uni-icons>
 						<text>草稿箱</text>
 					</view>
@@ -203,6 +203,12 @@
 	function goLoginPage() {
 		uni.navigateTo({
 			url: "/pages/userinfo/login/login",
+		});
+	}
+
+	function goDrafts() {
+		uni.navigateTo({
+			url: "/pages/Drafts/Drafts",
 		});
 	}
 

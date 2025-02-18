@@ -1,0 +1,7 @@
+{
+  "name": "fabu",
+  "dependencies": {},
+  "extensions": {
+    "uni-cloud-jql": {}
+  }
+}

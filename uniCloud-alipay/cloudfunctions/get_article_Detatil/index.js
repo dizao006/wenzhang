@@ -6,6 +6,8 @@ exports.main = async (event, context) => {
 	const {
 		articleId
 	} = event;
+	console.log(event, "event")
+	console.log(articleId, "articlid")
 	await db.collection('article').doc(articleId).update({
 		browse_count: dbcmd.inc(1)
 	})
@@ -16,7 +18,6 @@ exports.main = async (event, context) => {
 			_id: articleId,
 		})
 		.end();
-	console.log(res, 'res');
 	//返回数据给客户端
 	return {
 		code: 0,
