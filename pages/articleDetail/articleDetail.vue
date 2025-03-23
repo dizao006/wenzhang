@@ -22,6 +22,10 @@
 			</view>
 		</uni-popup>
 		<view class="detail-title"> {{ Parms?.title }} </view>
+		<view @click="exportToMD" style="position: relative; right: -80%; transform: translate(10px,-25px);">
+			<uni-icons type="redo-filled" size="30"></uni-icons>
+		</view>
+
 		<view class="detail-header">
 			<view class="detail-logo">
 				<image :src="Parms?.author.avatar" mode="aspectFill"></image>
@@ -40,7 +44,7 @@
 				@click="followAuthor">{{ isFllow ? '取消关注' : '关注'}}</button>
 		</view>
 		<view class="detail-content-container">
-			<view class="detail-html">
+			<view>
 				<uv-parse :content="content" :selectable="true" lazyLoad="true"></uv-parse>
 			</view>
 			<view class="detail-comment">
@@ -76,6 +80,8 @@
 </template>
 
 <script setup>
+	import html2canvas from 'html2canvas';
+	import jsPDF from 'jspdf';
 	import love from "../../components/love/love.vue";
 	import commentBoxVue from "../../components/comment-box/commentBox.vue";
 	import AiVue from "../Ai/Ai.vue";
@@ -108,6 +114,7 @@
 	import {
 		updateGoodOk
 	} from "@/ajax/api/interface/updateGoodOk.js"
+	import TurndownService from 'turndown'; // 引入 turndown 库
 	const store = useStore()
 	const {
 		checkLogin
@@ -250,6 +257,91 @@
 			url: `/pages/commentList/commentList?id=${Parms.value._id}`
 		})
 	}
+
+
+
+
+	const exportToMD = () => {
+		try {
+			const content = Parms.value?.content;
+			if (!content) {
+				uni.showToast({
+					title: '未找到文章内容',
+					icon: 'none',
+				});
+				return;
+			}
+
+			// 初始化 turndown 服务
+			const turndownService = new TurndownService();
+
+			// 自定义 turndown 规则（可选）
+			turndownService.addRule('codeBlock', {
+				filter: ['pre'],
+				replacement: (content, node) => {
+					const language = node.querySelector('code')?.classList.value || '';
+					return `\`\`\`${language}\n${content}\n\`\`\``;
+				},
+			});
+			turndownService.addRule('table', {
+				filter: 'table',
+				replacement: (content, node) => {
+					const rows = node.querySelectorAll('tr');
+					let markdownTable = '';
+
+					rows.forEach((row, rowIndex) => {
+						const cells = row.querySelectorAll('th, td');
+						let rowContent = '|';
+
+						cells.forEach((cell) => {
+							rowContent += ` ${cell.textContent} |`;
+						});
+
+						markdownTable += `${rowContent}\n`;
+
+						// 添加表头分隔线
+						if (rowIndex === 0) {
+							markdownTable += '|';
+							cells.forEach(() => {
+								markdownTable += ' --- |';
+							});
+							markdownTable += '\n';
+						}
+					});
+
+					return markdownTable;
+				},
+			});
+
+			// 将 HTML 转换为 Markdown
+			const markdownContent = turndownService.turndown(content);
+
+			// 创建 Blob 对象
+			const blob = new Blob([markdownContent], {
+				type: 'text/markdown'
+			});
+			const url = URL.createObjectURL(blob);
+
+			// 创建下载链接
+			const link = document.createElement('a');
+			link.href = url;
+			link.download = `${Parms.value.title}.md`;
+			document.body.appendChild(link);
+			link.click(); // 触发下载
+			document.body.removeChild(link); // 移除链接
+
+			uni.showToast({
+				title: '导出 MD 成功',
+				icon: 'success',
+			});
+		} catch (error) {
+			console.error('导出 MD 失败:', error);
+			uni.showToast({
+				title: '导出 MD 失败',
+				icon: 'none',
+			});
+		}
+	};
 </script>
 
 <style lang="scss">

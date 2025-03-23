@@ -1,29 +1,50 @@
 {
-  "hash": "ea947826",
+  "hash": "f1044136",
   "configHash": "0c480d03",
-  "lockfileHash": "b1048e0d",
-  "browserHash": "3a505624",
+  "lockfileHash": "29b702d2",
+  "browserHash": "614a6287",
   "optimized": {
     "antd/es/list/Item": {
       "src": "../../../../../../../../../../node_modules/antd/es/list/Item.js",
       "file": "antd_es_list_Item.js",
-      "fileHash": "0e590d34",
+      "fileHash": "ee014fe4",
+      "needsInterop": false
+    },
+    "jspdf": {
+      "src": "../../../../../node_modules/jspdf/dist/jspdf.es.min.js",
+      "file": "jspdf.js",
+      "fileHash": "ec4d8925",
+      "needsInterop": false
+    },
+    "html2canvas": {
+      "src": "../../../../../node_modules/html2canvas/dist/html2canvas.esm.js",
+      "file": "html2canvas.js",
+      "fileHash": "18f186d3",
       "needsInterop": false
     },
     "marked": {
       "src": "../../../../../node_modules/marked/lib/marked.esm.js",
       "file": "marked.js",
-      "fileHash": "f1ac0b02",
+      "fileHash": "05da110a",
       "needsInterop": false
     },
-    "html-to-md": {
-      "src": "../../../../../node_modules/html-to-md/dist/index.js",
-      "file": "html-to-md.js",
-      "fileHash": "bf9cec5f",
-      "needsInterop": true
+    "turndown": {
+      "src": "../../../../../node_modules/turndown/lib/turndown.browser.es.js",
+      "file": "turndown.js",
+      "fileHash": "b3419342",
+      "needsInterop": false
     }
   },
   "chunks": {
+    "purify.es-LCV5V7ZS": {
+      "file": "purify__es-LCV5V7ZS.js"
+    },
+    "index.es-46BAZMIP": {
+      "file": "index__es-46BAZMIP.js"
+    },
+    "chunk-MUPOWRKU": {
+      "file": "chunk-MUPOWRKU.js"
+    },
     "chunk-LNEMQRCO": {
       "file": "chunk-LNEMQRCO.js"
     }
