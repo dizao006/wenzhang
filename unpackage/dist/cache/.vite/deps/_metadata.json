@@ -1,37 +1,25 @@
 {
-  "hash": "eeaed607",
+  "hash": "ea947826",
   "configHash": "0c480d03",
-  "lockfileHash": "43a67d3b",
-  "browserHash": "239c66ce",
+  "lockfileHash": "b1048e0d",
+  "browserHash": "3a505624",
   "optimized": {
-    "wangeditor": {
-      "src": "../../../../../node_modules/wangeditor/dist/wangEditor.js",
-      "file": "wangeditor.js",
-      "fileHash": "04eafd50",
-      "needsInterop": true
+    "antd/es/list/Item": {
+      "src": "../../../../../../../../../../node_modules/antd/es/list/Item.js",
+      "file": "antd_es_list_Item.js",
+      "fileHash": "0e590d34",
+      "needsInterop": false
     },
     "marked": {
       "src": "../../../../../node_modules/marked/lib/marked.esm.js",
       "file": "marked.js",
-      "fileHash": "66048a9a",
-      "needsInterop": false
-    },
-    "antd/es/list/Item": {
-      "src": "../../../../../../../../../../node_modules/antd/es/list/Item.js",
-      "file": "antd_es_list_Item.js",
-      "fileHash": "d2d1c216",
-      "needsInterop": false
-    },
-    "turndown": {
-      "src": "../../../../../node_modules/turndown/lib/turndown.browser.es.js",
-      "file": "turndown.js",
-      "fileHash": "be43164d",
+      "fileHash": "f1ac0b02",
       "needsInterop": false
     },
     "html-to-md": {
       "src": "../../../../../node_modules/html-to-md/dist/index.js",
       "file": "html-to-md.js",
-      "fileHash": "050ff875",
+      "fileHash": "bf9cec5f",
       "needsInterop": true
     }
   },

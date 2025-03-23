@@ -109,9 +109,9 @@
 						<uni-icons size="35px" color="black" type="eye"></uni-icons>
 						<text>文章</text>
 					</view>
-					<view class="list-text">
+					<view class="list-text" @click="gotoAi">
 						<uni-icons size="35px" color="black" type="fire"></uni-icons>
-						<text>沸点</text>
+						<text>AI</text>
 					</view>
 					<view class="list-text" @click="gotoFeedBack">
 						<uni-icons size="35px" color="black" type="help"></uni-icons>
@@ -221,6 +221,13 @@
 	function goBk() {
 		uni.navigateTo({
 			url: "/pages/Boke/Boke",
+		});
+	}
+
+
+	function gotoAi() {
+		uni.navigateTo({
+			url: "/pages/Ai/Ai",
 		});
 	}
 

@@ -112,3 +112,19 @@
 		width: 88rpx;
 	}
 }
+.ai{
+	position: fixed;
+	left: 0px;	
+	top: 60%;
+}
+.ai-popup-content {
+  background-color: #fff;
+  border-radius: 10px 0 0 10px; /* 左侧圆角 */
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1); /* 左侧阴影 */
+  padding: 20px;
+  overflow-y: auto; /* 内容超出时滚动 */
+  transform: scale(60%);
+  position: relative;
+  right: -25%;
+  top: -15%;
+}

@@ -166,24 +166,27 @@
 			}
 		},
 		{
-			"path" : "pages/Boke/Boke",
-			"style" : 
-			{
-				"navigationBarTitleText" : ""
+			"path": "pages/Boke/Boke",
+			"style": {
+				"navigationBarTitleText": ""
 			}
 		},
 		{
-			"path" : "pages/Drafts/Drafts",
-			"style" : 
-			{
-				"navigationBarTitleText" : ""
+			"path": "pages/Drafts/Drafts",
+			"style": {
+				"navigationBarTitleText": ""
 			}
 		},
 		{
-			"path" : "pages/articPush/articPush",
-			"style" : 
-			{
-				"navigationBarTitleText" : ""
+			"path": "pages/articPush/articPush",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/Ai/Ai",
+			"style": {
+				"navigationBarTitleText": "缔造AI"
 			}
 		}
 	],

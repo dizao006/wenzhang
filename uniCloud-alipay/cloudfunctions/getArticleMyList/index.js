@@ -14,10 +14,16 @@ exports.main = async (event, context) => {
 	}).match({
 		id: dbcmd.in(article_ids)
 	}).end()
+	const list2 = await db.collection('article').aggregate().project({
+		content: 0,
+		comments: 0
+	}).match({
+		userId: userId
+	}).end()
 	//返回数据给客户端
 	return {
 		code: 0,
 		msg: 'ok',
-		data: list.data
+		data: [...list.data, ...list2.data]
 	}
 };
