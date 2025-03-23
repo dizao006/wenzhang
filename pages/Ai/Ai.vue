@@ -54,7 +54,7 @@
 	} from '@/common/ai.js';
 	import getAarticleDetatil from "../../ajax/api/interface/getAarticleDetatil";
 	const parm = defineProps(["articleId"]);
-	console.log(parm, " parm")
+	//ai处理逻辑
 	// 聊天记录
 	const chatList = ref([]);
 
