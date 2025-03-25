@@ -1,1 +1,0 @@
-import{p as o,i as n}from"./index-VArvefSN.js";function e(){const e=o();return{checkLogin:()=>new Promise(((o,s)=>{const t=e.state.userInfo;t?(e.commit("updateUserInfo",t),o(t)):n({url:"/pages/userinfo/login/login"}).catch((o=>{s(o)}))}))}}export{e as u};

@@ -14,7 +14,7 @@ export async function main(userMessage, onChunkReceived, isDeepThinking = false)
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
-				Authorization: `Bearer sk-bb9cc26da95346748beaf3a2b49ead64`, // 替换为你的 API Key
+				Authorization: `Bearer sk-bb9cc26da95346748beaf3a2b49ead64`, //  API Key
 			},
 			body: JSON.stringify({
 				model: isDeepThinking ? 'deepseek-reasoner' : 'deepseek-chat', // 根据是否深度思考选择模型

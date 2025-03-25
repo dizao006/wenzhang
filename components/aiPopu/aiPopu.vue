@@ -8,7 +8,7 @@
 				<uni-icons type="closeempty" size="24" color="#999"></uni-icons>
 			</view>
 			<!-- AI 页面 -->
-			<AiVue></AiVue>
+			<ai2Vue></ai2Vue>
 		</view>
 	</view>
 </template>
@@ -17,7 +17,8 @@
 	import {
 		ref
 	} from 'vue';
-	import AiVue from '../../pages/Ai/Ai.vue';
+	// import AiVue from '../../pages/Ai/Ai.vue';
+	import ai2Vue from '../../pages/ai2/ai2.vue';
 
 	// 控制弹窗显示/隐藏
 	const visible = ref(false);

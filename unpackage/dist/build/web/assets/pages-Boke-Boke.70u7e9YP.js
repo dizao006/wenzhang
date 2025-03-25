@@ -1,1 +1,0 @@
-import{_ as a,c as s,d as e,j as r,o as t,a2 as c}from"./index-VArvefSN.js";const n=a({},[["render",function(a,n){const o=r;return t(),s(o,{class:"container"},{default:e((()=>[c("iframe",{src:"https://juejin.cn/user/935048196920576",frameborder:"0",class:"full-iframe"})])),_:1})}],["__scopeId","data-v-932074c5"]]);export{n as default};

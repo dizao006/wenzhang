@@ -188,6 +188,13 @@
 			"style": {
 				"navigationBarTitleText": "缔造AI"
 			}
+		},
+		{
+			"path" : "pages/ai2/ai2",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
 		}
 	],
 	"globalStyle": {

@@ -227,7 +227,7 @@
 
 	function gotoAi() {
 		uni.navigateTo({
-			url: "/pages/Ai/Ai",
+			url: "/pages/ai2/ai2",
 		});
 	}
 

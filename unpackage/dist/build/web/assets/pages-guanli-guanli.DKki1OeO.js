@@ -1,1 +1,0 @@
-import{_ as a,c as s,d as n,j as t,o as e,a2 as o}from"./index-VArvefSN.js";const r=a({},[["render",function(a,r){const l=t;return e(),s(l,null,{default:n((()=>[o("h1",null,"管理")])),_:1})}]]);export{r as default};
