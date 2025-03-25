@@ -2,69 +2,30 @@
   "hash": "f1044136",
   "configHash": "0c480d03",
   "lockfileHash": "29b702d2",
-  "browserHash": "4ba20fa8",
+  "browserHash": "af680945",
   "optimized": {
     "antd/es/list/Item": {
       "src": "../../../../../../../../../../node_modules/antd/es/list/Item.js",
       "file": "antd_es_list_Item.js",
-      "fileHash": "fbddcadc",
+      "fileHash": "f1550691",
       "needsInterop": false
-    },
-    "jspdf": {
-      "src": "../../../../../node_modules/jspdf/dist/jspdf.es.min.js",
-      "file": "jspdf.js",
-      "fileHash": "e5632484",
-      "needsInterop": false
-    },
-    "html2canvas": {
-      "src": "../../../../../node_modules/html2canvas/dist/html2canvas.esm.js",
-      "file": "html2canvas.js",
-      "fileHash": "320ccb2b",
-      "needsInterop": false
-    },
-    "marked": {
-      "src": "../../../../../node_modules/marked/lib/marked.esm.js",
-      "file": "marked.js",
-      "fileHash": "cf4e43e2",
-      "needsInterop": false
-    },
-    "turndown": {
-      "src": "../../../../../node_modules/turndown/lib/turndown.browser.es.js",
-      "file": "turndown.js",
-      "fileHash": "c341f793",
-      "needsInterop": false
-    },
-    "html-to-md": {
-      "src": "../../../../../node_modules/html-to-md/dist/index.js",
-      "file": "html-to-md.js",
-      "fileHash": "84420394",
-      "needsInterop": true
     },
     "crypto-js": {
       "src": "../../../../../node_modules/crypto-js/index.js",
       "file": "crypto-js.js",
-      "fileHash": "5aa86860",
+      "fileHash": "dc1ffbfd",
       "needsInterop": true
     },
     "base-64": {
       "src": "../../../../../node_modules/base-64/base64.js",
       "file": "base-64.js",
-      "fileHash": "48fc4b03",
+      "fileHash": "6bbeaf70",
       "needsInterop": true
     }
   },
   "chunks": {
-    "purify.es-EF2AWHTW": {
-      "file": "purify__es-EF2AWHTW.js"
-    },
-    "index.es-Y5YXEV6T": {
-      "file": "index__es-Y5YXEV6T.js"
-    },
-    "chunk-MUPOWRKU": {
-      "file": "chunk-MUPOWRKU.js"
-    },
-    "chunk-7RP6IU3L": {
-      "file": "chunk-7RP6IU3L.js"
+    "chunk-BQWMX7FD": {
+      "file": "chunk-BQWMX7FD.js"
     }
   }
 }

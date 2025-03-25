@@ -116,9 +116,9 @@
 		"router": {
 			"mode": "hash"
 		},
-		"devServer": {
-			"https": true // 浏览器录音API需要HTTPS环境
-		},
+		// "devServer": {
+		// 	"https": true // 浏览器录音API需要HTTPS环境
+		// },
 		"title": "DZ俱乐部",
 		"optimization": {
 			"treeShaking": {
