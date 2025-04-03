@@ -4,7 +4,6 @@
 			<text>屏幕已锁定</text>
 			<button style="margin-top: 20px;" @click="unlock">解锁</button>
 		</view>
-
 	</view>
 	<view else>
 		<view class="top">
@@ -107,7 +106,7 @@
 				<view class="card">
 					<view class="list-text" @click="gotoMySelfArtic">
 						<uni-icons size="35px" color="black" type="eye"></uni-icons>
-						<text>文章</text>
+						<text>游戏</text>
 					</view>
 					<view class="list-text" @click="gotoAi">
 						<uni-icons size="35px" color="black" type="fire"></uni-icons>
@@ -224,7 +223,6 @@
 		});
 	}
 
-
 	function gotoAi() {
 		uni.navigateTo({
 			url: "/pages/ai2/ai2",
@@ -271,7 +269,7 @@
 
 	function goGame() {
 		uni.navigateTo({
-			url: "/pages/game/game",
+			url: "/pages/Code/Code",
 		});
 	}
 
@@ -308,7 +306,7 @@
 
 	function gotoMySelfArtic() {
 		uni.navigateTo({
-			url: "/pages/myArticle/myArticle",
+			url: "/pages/game/game",
 		});
 	}
 

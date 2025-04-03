@@ -1,28 +1,43 @@
 {
-    "id": "set-userinfo",
-    "name": "app设置修改资料页面插件，集成修改头像，三级地址选择器，修改性别",
-    "displayName": "app设置修改资料页面插件，集成修改头像，三级地址选择器，修改性别",
-    "version": "1.0.0",
-    "description": "app设置修改资料页面插件，集成修改头像，三级地址选择器，修改性别",
-    "keywords": [
-        "资料页面",
-        "修改头像",
-        "地址选择器",
-        "修改性别"
-    ],
-    "dcloudext": {
-        "category": [
-            "前端组件",
-            "通用组件"
-        ]
-    },
-    "dependencies": {
-        "base-64": "^1.0.0",
-        "crypto-js": "^4.2.0",
-        "html-to-md": "^0.8.6",
-        "marked": "^4.3.0",
-        "md-editor-v3": "^5.0.0",
-        "openai": "^4.89.0",
-        "wangeditor": "^4.7.15"
-    }
+	"id": "set-userinfo",
+	"name": "app设置修改资料页面插件，集成修改头像，三级地址选择器，修改性别",
+	"displayName": "app设置修改资料页面插件，集成修改头像，三级地址选择器，修改性别",
+	"version": "1.0.0",
+	"description": "app设置修改资料页面插件，集成修改头像，三级地址选择器，修改性别",
+	"keywords": [
+		"资料页面",
+		"修改头像",
+		"地址选择器",
+		"修改性别"
+	],
+	"dcloudext": {
+		"category": [
+			"前端组件",
+			"通用组件"
+		]
+	},
+	"dependencies": {
+		"@codemirror/lang-javascript": "^6.2.3",
+		"@codemirror/theme-one-dark": "^6.1.2",
+		"@dcloudio/uni-ui": "^1.5.7",
+		"@vitejs/plugin-vue": "^5.2.3",
+		"base-64": "^1.0.0",
+		"codemirror": "^6.0.1",
+		"crypto-js": "^4.2.0",
+		"highlight.js": "^11.11.1",
+		"html-to-md": "^0.8.6",
+		"lodash": "^4.17.21",
+		"marked": "^4.3.0",
+		"md-editor-v3": "^5.0.0",
+		"openai": "^4.89.0",
+		"unplugin-vue-components": "^28.4.1",
+		"vite": "^6.2.5",
+		"wangeditor": "^4.7.15"
+	},
+	"easycom": {
+		"autoscan": true,
+		"custom": {
+			"^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue"
+		}
+	}
 }
