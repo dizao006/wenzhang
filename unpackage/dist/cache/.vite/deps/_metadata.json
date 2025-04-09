@@ -1,64 +1,31 @@
 {
-  "hash": "f1044136",
-  "configHash": "0c480d03",
-  "lockfileHash": "29b702d2",
-  "browserHash": "d1e7f396",
+  "hash": "7bfb79c2",
+  "configHash": "31be615e",
+  "lockfileHash": "b19a1aa0",
+  "browserHash": "bc6df257",
   "optimized": {
     "antd/es/list/Item": {
-      "src": "../../../../../../../../../../node_modules/antd/es/list/Item.js",
+      "src": "../../../../../../../../node_modules/antd/es/list/Item.js",
       "file": "antd_es_list_Item.js",
-      "fileHash": "ac43545b",
+      "fileHash": "d531994e",
       "needsInterop": false
     },
     "crypto-js": {
       "src": "../../../../../node_modules/crypto-js/index.js",
       "file": "crypto-js.js",
-      "fileHash": "83bf8256",
+      "fileHash": "413b60df",
       "needsInterop": true
     },
     "base-64": {
       "src": "../../../../../node_modules/base-64/base64.js",
       "file": "base-64.js",
-      "fileHash": "2c260efd",
-      "needsInterop": true
-    },
-    "marked": {
-      "src": "../../../../../node_modules/marked/lib/marked.esm.js",
-      "file": "marked.js",
-      "fileHash": "98b09f20",
-      "needsInterop": false
-    },
-    "monaco-editor/esm/vs/editor/editor.api": {
-      "src": "../../../../../node_modules/monaco-editor/esm/vs/editor/editor.api.js",
-      "file": "monaco-editor_esm_vs_editor_editor__api.js",
-      "fileHash": "7d39d097",
-      "needsInterop": false
-    },
-    "monaco-editor/esm/vs/basic-languages/javascript/javascript.contribution": {
-      "src": "../../../../../node_modules/monaco-editor/esm/vs/basic-languages/javascript/javascript.contribution.js",
-      "file": "monaco-editor_esm_vs_basic-languages_javascript_javascript__contribution.js",
-      "fileHash": "05f69f47",
-      "needsInterop": false
-    },
-    "lodash": {
-      "src": "../../../../../node_modules/lodash/lodash.js",
-      "file": "lodash.js",
-      "fileHash": "bd925929",
+      "fileHash": "091d8109",
       "needsInterop": true
     }
   },
   "chunks": {
-    "javascript-VJY543JP": {
-      "file": "javascript-VJY543JP.js"
-    },
-    "chunk-AWSTD5PV": {
-      "file": "chunk-AWSTD5PV.js"
-    },
-    "chunk-CQM5ERUH": {
-      "file": "chunk-CQM5ERUH.js"
-    },
-    "chunk-7RP6IU3L": {
-      "file": "chunk-7RP6IU3L.js"
+    "chunk-BQWMX7FD": {
+      "file": "chunk-BQWMX7FD.js"
     }
   }
 }

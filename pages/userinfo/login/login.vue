@@ -33,12 +33,8 @@
 				</uni-forms-item>
 			</view>
 			<SendCode :form='form' :sendCodeData="sendCodeData" v-if="type=='phone'"></SendCode>
-			<button class="login-btn" @click=" login">点击登录</button>
+			<button class="login-btn" @click="login">点击登录</button>
 		</uni-forms>
-		<view class="footer-select">
-			<text>注册</text>
-			<text>忘记密码</text>
-		</view>
 	</view>
 </template>
 
@@ -56,6 +52,7 @@
 		phone
 	} from '../../../ajax/api/user_login/phone';
 	const store = useStore(); // 使用 useStore 获取 store 实例
+	const loading = ref(false)
 	let fromData = ref({
 		loginName: '',
 		password: '',
@@ -115,49 +112,78 @@
 	}
 
 	async function login() {
-		let res = await form.value.validate()
-		if (res.vCode && res.vCode != PhoneCode.value) {
+		try {
+			const res = await form.value.validate()
+			if (type.value === 'phone' && res.vCode && res.vCode != PhoneCode.value) {
+				uni.showToast({
+					title: "验证码错误",
+					icon: 'none'
+				});
+				return
+			}
+			// 验证登录
+			submit({
+				type: type.value,
+				...res
+			})
+		} catch (error) {
+			// 表单验证失败
+			console.error('表单验证失败:', error)
 			uni.showToast({
-				title: "验证码错误",
+				title: '表单填写有误，请检查',
 				icon: 'none'
-			});
-			return
+			})
 		}
-		// 验证登录
-		submit({
-			type: type.value,
-			...res
-		})
 	}
 
 	function sendCodeData(data) {
 		PhoneCode.value = data
 	}
 
-
 	/**
 	 * @param {Object} formData 登录方法
 	 */
 	async function submit(formData) {
-		const userInfo = await user_login(formData);
-		if (userInfo) {
-			// 使用 store.commit 来提交 mutation
-			store.commit('updateUserInfo', userInfo);
+		// 添加加载状态防止重复提交
+		if (loading.value) return;
+		loading.value = true;
+
+		try {
+			const userInfo = await user_login(formData);
+
+			if (userInfo) {
+				// 提交用户信息到store
+				store.commit('updateUserInfo', userInfo);
+
+				uni.showToast({
+					title: "登录成功",
+					icon: 'none',
+					duration: 1000
+				});
+
+				// 使用setTimeout确保Toast显示完成
+				setTimeout(() => {
+					// 检查当前页面栈
+					uni.switchTab({
+						url: '/pages/index/index'
+					});
+				}, 1000);
+			} else {
+				uni.showToast({
+					title: "账号或密码错误",
+					icon: 'none'
+				});
+			}
+		} catch (e) {
+			console.error('登录失败:', e);
 			uni.showToast({
-				title: "登陆成功",
+				title: e.message || "登录失败，请重试",
 				icon: 'none'
 			});
-			setTimeout(() => {
-				uni.navigateBack();
-			}, 1000);
-		} else {
-			uni.showToast({
-				title: "账号或者密码错误",
-				icon: 'none'
-			});
+		} finally {
+			loading.value = false;
 		}
 	}
-
 
 	function SetloginName(rule, val, data, callback) {
 		switch (true) {

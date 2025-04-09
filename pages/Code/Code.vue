@@ -340,7 +340,6 @@
 					})
 				}
 			},
-
 			submitCode() {
 				this.showResults = true;
 				if (this.testResults.every(r => r.passed)) {
@@ -355,6 +354,7 @@
 							}
 						}
 					})
+
 				} else {
 					uni.showToast({
 						title: `请先通过所有测试用例 (${this.passRate}%)`,

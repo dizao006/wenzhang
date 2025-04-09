@@ -18,9 +18,9 @@ export default ({
 				} else {
 					uni.showToast({
 						icon: "none",
-						title: result.msg || '未知错误',
+						title: result.message,
 					});
-					reject(new Error(result.msg || '未知错误')); // 传递错误信息
+					reject(new Error(result.message)); // 传递错误信息
 				}
 			},
 			fail(err) {
