@@ -1,1 +1,1 @@
-<view><uv-parse wx:if="{{a}}" u-i="1163f4d0-0" bind:__l="__l" u-p="{{a}}"></uv-parse></view>
+<view class="preview-container data-v-18cea5aa"><rich-text class="data-v-18cea5aa" nodes="{{a}}"></rich-text></view>

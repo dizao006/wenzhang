@@ -1,1 +1,1 @@
-<view><view>编辑资料</view></view>
+<view class="body"><set-userinfo wx:if="{{b}}" bindupdateStore="{{a}}" u-i="59525ef4-0" bind:__l="__l" u-p="{{b}}"></set-userinfo></view>

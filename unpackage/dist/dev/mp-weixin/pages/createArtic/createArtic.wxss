@@ -25,33 +25,71 @@
 /* 文章场景相关 */
 /* 添加一个flex布局的混编方法 */
 /* 全局系统样式定义 */
+.markdown-editor.data-v-c9deb6ff {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 .markdown-editor .header.data-v-c9deb6ff {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px;
+  background-color: #f5f5f5;
 }
 .markdown-editor .header text.data-v-c9deb6ff {
   font-size: 14px;
   margin-left: 10px;
+  cursor: pointer;
 }
-.markdown-editor input.data-v-c9deb6ff {
-  margin-bottom: 18px;
-  padding: 5px;
+.markdown-editor .header .picker.data-v-c9deb6ff {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
   border-radius: 5px;
+  margin: 5px;
+  cursor: pointer;
 }
-.markdown-editor textarea.data-v-c9deb6ff {
-  height: 100vh;
-  width: 100%;
-  margin-bottom: 10px;
-  padding: 5px;
+.markdown-editor .title-input.data-v-c9deb6ff {
+  margin: 10px;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ddd;
   border-radius: 5px;
-}
-.markdown-editor .preview-container.data-v-c9deb6ff {
-  flex: 1;
-  width: 100%;
+  width: calc(100% - 20px);
 }
 .markdown-editor .line.data-v-c9deb6ff {
   width: 95vw;
   outline: 1rpx solid rgba(117, 117, 117, 0.6);
+  margin: 10px 0;
+}
+.markdown-editor .editor-textarea.data-v-c9deb6ff {
+  /* 让 textarea 占满剩余空间 */
+  flex: 1;
+  width: calc(100% - 40px);
+  height: 50vh;
+  margin: 10px;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  resize: none;
+  line-height: 1.6;
+  background-color: #fafafa;
+}
+.markdown-editor .preview-container.data-v-c9deb6ff {
+  /* 让预览容器占满剩余空间 */
+  flex: 1;
+  padding: 10px;
+  margin: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+  overflow-y: auto;
+  line-height: 1.6;
+  color: #333;
+  border: 1px solid #ddd;
+}
+.markdown-editor .word-count.data-v-c9deb6ff {
+  margin: 0 10px;
+  font-size: 12px;
+  color: #999;
 }

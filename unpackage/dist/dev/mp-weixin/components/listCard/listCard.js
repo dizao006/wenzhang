@@ -33,15 +33,16 @@ const _sfc_main = {
         browse_count
       };
       emit("saveSearchHistory");
+      const encodedData = encodeURIComponent(JSON.stringify(parms));
       common_vendor.index.navigateTo({
-        url: `/pages/articleDetail/articleDetail?options=${JSON.stringify(parms)}`
+        url: `/pages/articleDetail/articleDetail?options=${encodedData}`
       });
     }
     return (_ctx, _cache) => {
       return common_vendor.e({
         a: common_vendor.unref(props).list.mode === "base"
       }, common_vendor.unref(props).list.mode === "base" ? {
-        b: common_vendor.unref(props).list.cover[0] ? common_vendor.unref(props).list.cover[0] : "/static/img/logo.jpeg",
+        b: common_vendor.unref(props).list.cover[0] ? common_vendor.unref(props).list.cover[0] : "/static/img/测试.jpg",
         c: common_vendor.t(common_vendor.unref(props).list.title),
         d: common_vendor.p({
           itemId: common_vendor.unref(props).list._id

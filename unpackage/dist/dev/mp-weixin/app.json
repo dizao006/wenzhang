@@ -14,11 +14,26 @@
     "pages/preView/preView",
     "pages/Calendar/Calendar",
     "pages/VipBuy/VipBuy",
+    "pages/gift/gift",
     "pages/setting/setting",
     "pages/dataConfig/dataConfig",
     "pages/accountConfig/accountConfig",
     "pages/configxiaoxi/configxiaoxi",
-    "pages/guanli/guanli"
+    "pages/guanli/guanli",
+    "pages/Flag/Flag",
+    "pages/TuiGuang/TuiGuang",
+    "pages/Lianxi/Lianxi",
+    "pages/game/game",
+    "pages/game2/game2",
+    "pages/InfoUser/InfoUser",
+    "pages/AccountUser/AccountUser",
+    "pages/Boke/Boke",
+    "pages/Drafts/Drafts",
+    "pages/articPush/articPush",
+    "pages/Ai/Ai",
+    "pages/ai2/ai2",
+    "pages/Code/Code",
+    "pages/xj/xj"
   ],
   "window": {
     "navigationBarTextStyle": "black",
@@ -58,5 +73,7 @@
     ]
   },
   "permission": {},
-  "usingComponents": {}
+  "usingComponents": {
+    "uni-popup": "/uni_modules/uni-popup/components/uni-popup/uni-popup"
+  }
 }

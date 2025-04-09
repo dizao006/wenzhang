@@ -1,9 +1,6 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
-const _sfc_main = {
-  components: {},
-  methods: {}
-};
+const _sfc_main = {};
 if (!Array) {
   const _easycom_uni_collapse_item2 = common_vendor.resolveComponent("uni-collapse-item");
   const _easycom_uni_collapse2 = common_vendor.resolveComponent("uni-collapse");
@@ -15,7 +12,7 @@ const _easycom_uni_collapse = () => "../../uni_modules/uni-collapse/components/u
 if (!Math) {
   (_easycom_uni_collapse_item + _easycom_uni_collapse)();
 }
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render(_ctx, _cache) {
   return {
     a: common_vendor.p({
       title: "Q·1:什么是内部课"

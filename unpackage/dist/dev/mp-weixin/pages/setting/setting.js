@@ -16,6 +16,7 @@ const _sfc_main = {
   setup(__props) {
     common_vendor.ref(true);
     const store = common_vendor.useStore();
+    const queueSize = common_vendor.ref("缓存大小0MB");
     function siginOut() {
       store.commit("updateUserInfo", null);
       common_vendor.index.switchTab({
@@ -23,7 +24,8 @@ const _sfc_main = {
       });
     }
     function changeSun() {
-      console.log("测试黑暗模式");
+      let body = document.querySelector("body");
+      body.style.backgroundClor;
     }
     function goXiangxi() {
       console.log("test");
@@ -31,23 +33,35 @@ const _sfc_main = {
         url: "/pages/dataConfig/dataConfig"
       });
     }
+    function goAbout() {
+      common_vendor.index.navigateTo({
+        url: "/pages/Lianxi/Lianxi"
+      });
+    }
     function goZhanghu() {
       common_vendor.index.navigateTo({
         url: "/pages/accountConfig/accountConfig"
       });
     }
-    function goXiaoxi() {
-      common_vendor.index.navigateTo({
-        url: "/pages/configxiaoxi/configxiaoxi"
-      });
-    }
-    function goGuanli() {
-      common_vendor.index.navigateTo({
-        url: "/pages/guanli/guanli"
-      });
-    }
     function goHuan() {
+      console.log("sss");
+      try {
+        common_vendor.index.clearStorageSync();
+        common_vendor.index.showToast({
+          title: "缓存清除成功",
+          icon: "success"
+        });
+      } catch (err) {
+        console.log("缓存同步清除失败：", err);
+      }
     }
+    common_vendor.onMounted(() => {
+      common_vendor.index.getStorageInfo({
+        success: (res) => {
+          queueSize.value = `缓存大小                        ${(res.currentSize / (1024 * 1024)).toFixed(2)}MB`;
+        }
+      });
+    });
     return (_ctx, _cache) => {
       return {
         a: common_vendor.p({
@@ -61,44 +75,30 @@ const _sfc_main = {
         }),
         d: common_vendor.o(goZhanghu),
         e: common_vendor.p({
-          showArrow: true,
-          title: "消息设置"
-        }),
-        f: common_vendor.o(goXiaoxi),
-        g: common_vendor.p({
-          showArrow: true,
-          title: "屏蔽管理"
-        }),
-        h: common_vendor.o(goGuanli),
-        i: common_vendor.p({
-          showArrow: true,
-          title: "个性化推荐"
-        }),
-        j: common_vendor.o((...args) => _ctx.goGexi && _ctx.goGexi(...args)),
-        k: common_vendor.p({
           title: "深色模式"
         }),
-        l: common_vendor.o((...args) => _ctx.goSun && _ctx.goSun(...args)),
-        m: common_vendor.o(changeSun),
-        n: common_vendor.o(goHuan),
-        o: common_vendor.p({
+        f: common_vendor.o((...args) => _ctx.goSun && _ctx.goSun(...args)),
+        g: common_vendor.o(changeSun),
+        h: common_vendor.p({
           showArrow: true,
-          title: "缓存处理"
+          title: queueSize.value
         }),
-        p: common_vendor.p({
+        i: common_vendor.o(goHuan),
+        j: common_vendor.p({
           rightText: "V1.0.0",
           showArrow: true,
           title: "当前版本"
         }),
-        q: common_vendor.p({
+        k: common_vendor.p({
           showArrow: true,
           title: "关于"
         }),
-        r: common_vendor.p({
+        l: common_vendor.o(goAbout),
+        m: common_vendor.p({
           title: "显示右侧箭头",
           type: "line"
         }),
-        s: common_vendor.o(siginOut)
+        n: common_vendor.o(siginOut)
       };
     };
   }
