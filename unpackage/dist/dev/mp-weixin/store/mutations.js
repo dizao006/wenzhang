@@ -33,8 +33,7 @@ const mutations = {
     state.labelListItem = data;
   },
   addArticList(state, data) {
-    state.articList[data.id] = data;
-    console.log(state.articList);
+    state.articList[data.articleId] = data;
   },
   addSelected(state, data) {
     state.selected.push(data);

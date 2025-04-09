@@ -26,7 +26,7 @@
 /* 添加一个flex布局的混编方法 */
 /* 全局系统样式定义 */
 page.data-v-f94a969d {
-  background: linear-gradient(to bottom, #f9f9f9, #F8F8F8);
+  background: linear-gradient(to bottom, #f9f9f9, #f8f8f8);
 }
 .my-header.data-v-f94a969d {
   position: relative;
@@ -189,4 +189,18 @@ page.data-v-f94a969d {
   justify-content: center;
   padding: 8rpx;
   color: rgba(0, 0, 0, 0.5);
+}
+.lock-screen.data-v-f94a969d {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  z-index: 9999;
 }

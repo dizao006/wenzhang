@@ -16,6 +16,7 @@ const _sfc_main = {
     common_vendor.ref("1.0.0");
     common_vendor.ref(false);
     const store = common_vendor.useStore();
+    let isLocked = common_vendor.ref(false);
     common_vendor.onLoad(() => {
     });
     function goLoginPage() {
@@ -23,9 +24,29 @@ const _sfc_main = {
         url: "/pages/userinfo/login/login"
       });
     }
+    function goDrafts() {
+      common_vendor.index.navigateTo({
+        url: "/pages/Drafts/Drafts"
+      });
+    }
     function goSetting() {
       common_vendor.index.navigateTo({
         url: "/pages/setting/setting"
+      });
+    }
+    function goBk() {
+      common_vendor.index.navigateTo({
+        url: "/pages/Boke/Boke"
+      });
+    }
+    function gotoAi() {
+      common_vendor.index.navigateTo({
+        url: "/pages/ai2/ai2"
+      });
+    }
+    function goAccount() {
+      common_vendor.index.navigateTo({
+        url: "/pages/AccountUser/AccountUser"
       });
     }
     function goCalendar() {
@@ -33,14 +54,55 @@ const _sfc_main = {
         url: "/pages/Calendar/Calendar"
       });
     }
+    function unlock() {
+      isLocked.value = false;
+    }
+    function suoping() {
+      isLocked.value = true;
+    }
     function goVip() {
       common_vendor.index.navigateTo({
         url: "/pages/VipBuy/VipBuy"
       });
     }
+    function goUser() {
+      common_vendor.index.navigateTo({
+        url: "/pages/InfoUser/InfoUser"
+      });
+    }
+    function goGift() {
+      common_vendor.index.navigateTo({
+        url: "/pages/gift/gift"
+      });
+    }
+    function goGame() {
+      common_vendor.index.navigateTo({
+        url: "/pages/Code/Code"
+      });
+    }
+    function goFalg() {
+      common_vendor.index.navigateTo({
+        url: "/pages/Flag/Flag"
+      });
+    }
+    function goGame2() {
+      common_vendor.index.navigateTo({
+        url: "/pages/game2/game2"
+      });
+    }
+    function goLianxi() {
+      common_vendor.index.navigateTo({
+        url: "/pages/Lianxi/Lianxi"
+      });
+    }
+    function goTuiGuang() {
+      common_vendor.index.navigateTo({
+        url: "/pages/TuiGuang/TuiGuang"
+      });
+    }
     function gotoMySelfArtic() {
       common_vendor.index.navigateTo({
-        url: "/pages/myArticle/myArticle"
+        url: "/pages/game/game"
       });
     }
     function gotoFeedBack() {
@@ -52,11 +114,13 @@ const _sfc_main = {
       common_vendor.index.chooseImage({
         count: 1,
         success: async (res) => {
-          const filePath = await uploadFi(res.tempFiles[0].path, res.tempFiles[0].name);
+          const filePath = await uploadFi(
+            res.tempFiles[0].path,
+            res.tempFiles[0].name
+          );
           let list = await common_vendor.Ys.getTempFileURL({
             fileList: [filePath]
           });
-          console.log(list.fileList[0].tempFileURL);
           await updateAvatar(list.fileList[0].tempFileURL);
         }
       });
@@ -86,126 +150,142 @@ const _sfc_main = {
     }
     return (_ctx, _cache) => {
       return common_vendor.e({
-        a: common_vendor.p({
+        a: common_vendor.unref(isLocked)
+      }, common_vendor.unref(isLocked) ? {
+        b: common_vendor.o(unlock)
+      } : {}, {
+        c: common_vendor.p({
           type: "scan",
           size: "25"
         }),
-        b: common_vendor.p({
+        d: common_vendor.p({
           type: "notification",
           size: "25"
         }),
-        c: common_vendor.o(goSetting),
-        d: common_vendor.p({
+        e: common_vendor.o(goSetting),
+        f: common_vendor.p({
           type: "gear",
           size: "25"
         }),
-        e: common_vendor.unref(store).state.userInfo
+        g: common_vendor.unref(store).state.userInfo
       }, common_vendor.unref(store).state.userInfo ? {
-        f: common_vendor.unref(store).state.userInfo.avatar,
-        g: common_vendor.o(changeAvatar),
-        h: common_vendor.t(common_vendor.unref(store).state.userInfo.author_name),
-        i: common_vendor.o((...args) => _ctx.changeName && _ctx.changeName(...args)),
-        j: common_vendor.t(common_vendor.unref(store).state.userInfo.follow_count),
-        k: common_vendor.t(common_vendor.unref(store).state.userInfo.fans_count),
-        l: common_vendor.t(common_vendor.unref(store).state.userInfo.integral_count || 0)
+        h: common_vendor.unref(store).state.userInfo.avatar,
+        i: common_vendor.o(changeAvatar),
+        j: common_vendor.t(common_vendor.unref(store).state.userInfo.author_name),
+        k: common_vendor.o((...args) => _ctx.changeName && _ctx.changeName(...args)),
+        l: common_vendor.t(common_vendor.unref(store).state.userInfo.follow_count),
+        m: common_vendor.t(common_vendor.unref(store).state.userInfo.fans_count),
+        n: common_vendor.t(common_vendor.unref(store).state.userInfo.integral_count || 0)
       } : {}, {
-        m: !common_vendor.unref(store).state.userInfo
+        o: !common_vendor.unref(store).state.userInfo
       }, !common_vendor.unref(store).state.userInfo ? {
-        n: common_assets._imports_0,
-        o: common_vendor.p({
+        p: common_assets._imports_0,
+        q: common_vendor.p({
           type: "arrowright",
           size: "14",
           color: "#666"
         }),
-        p: common_vendor.o(goLoginPage)
+        r: common_vendor.o(goLoginPage)
       } : {}, {
-        q: common_vendor.p({
+        s: common_vendor.p({
           size: "35px",
           color: "black",
           type: "calendar"
         }),
-        r: common_vendor.o(goCalendar),
-        s: common_vendor.p({
+        t: common_vendor.o(goCalendar),
+        v: common_vendor.p({
           size: "35px",
           color: "black",
           type: "vip"
         }),
-        t: common_vendor.o(goVip),
-        v: common_vendor.p({
+        w: common_vendor.o(goVip),
+        x: common_vendor.p({
           size: "35px",
           color: "black",
           type: "flag"
         }),
-        w: common_vendor.p({
+        y: common_vendor.o(goFalg),
+        z: common_vendor.p({
           size: "35px",
           color: "black",
           type: "wallet"
         }),
-        x: common_vendor.p({
-          type: "arrow-right"
-        }),
-        y: common_vendor.p({
-          size: "35px",
-          color: "black",
-          type: "gift"
-        }),
-        z: common_vendor.p({
-          size: "35px",
-          color: "black",
-          type: "medal"
-        }),
-        A: common_vendor.p({
-          size: "35px",
-          color: "black",
-          type: "person"
-        }),
+        A: common_vendor.o(goAccount),
         B: common_vendor.p({
-          size: "35px",
-          color: "black",
-          type: "bars"
+          type: "arrow-right"
         }),
         C: common_vendor.p({
           size: "35px",
           color: "black",
+          type: "gift"
+        }),
+        D: common_vendor.o(goGift),
+        E: common_vendor.p({
+          size: "35px",
+          color: "black",
+          type: "medal"
+        }),
+        F: common_vendor.o(goGame),
+        G: common_vendor.p({
+          size: "35px",
+          color: "black",
+          type: "person"
+        }),
+        H: common_vendor.o(goUser),
+        I: common_vendor.p({
+          size: "35px",
+          color: "black",
+          type: "bars"
+        }),
+        J: common_vendor.o(goDrafts),
+        K: common_vendor.p({
+          size: "35px",
+          color: "black",
           type: "eye"
         }),
-        D: common_vendor.o(gotoMySelfArtic),
-        E: common_vendor.p({
+        L: common_vendor.o(gotoMySelfArtic),
+        M: common_vendor.p({
           size: "35px",
           color: "black",
           type: "fire"
         }),
-        F: common_vendor.p({
+        N: common_vendor.o(gotoAi),
+        O: common_vendor.p({
           size: "35px",
           color: "black",
           type: "help"
         }),
-        G: common_vendor.o(gotoFeedBack),
-        H: common_vendor.p({
+        P: common_vendor.o(gotoFeedBack),
+        Q: common_vendor.p({
           size: "35px",
           color: "black",
           type: "locked"
         }),
-        I: common_vendor.p({
+        R: common_vendor.o(suoping),
+        S: common_vendor.p({
           size: "35px",
           color: "black",
           type: "map-pin-ellipse"
         }),
-        J: common_vendor.p({
+        T: common_vendor.o(goTuiGuang),
+        U: common_vendor.p({
           size: "35px",
           color: "black",
           type: "phone"
         }),
-        K: common_vendor.p({
+        V: common_vendor.o(goLianxi),
+        W: common_vendor.p({
           size: "35px",
           color: "black",
           type: "undo"
         }),
-        L: common_vendor.p({
+        X: common_vendor.o(goGame2),
+        Y: common_vendor.p({
           size: "35px",
           color: "black",
           type: "paperclip"
-        })
+        }),
+        Z: common_vendor.o(goBk)
       });
     };
   }

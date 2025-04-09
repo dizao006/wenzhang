@@ -36,7 +36,9 @@ const _sfc_main = {
       }
     });
     function returnAfterView() {
-      common_vendor.index.navigateBack();
+      common_vendor.index.switchTab({
+        url: "../../pages/index/index"
+      });
     }
     function getSystemInfo() {
       common_vendor.index.getSystemInfo().then((e) => {

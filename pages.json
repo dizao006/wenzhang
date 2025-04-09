@@ -190,17 +190,21 @@
 			}
 		},
 		{
-			"path" : "pages/ai2/ai2",
-			"style" : 
-			{
-				"navigationBarTitleText" : ""
+			"path": "pages/ai2/ai2",
+			"style": {
+				"navigationBarTitleText": "在线助手"
 			}
 		},
 		{
-			"path" : "pages/Code/Code",
-			"style" : 
-			{
-				"navigationBarTitleText" : ""
+			"path": "pages/Code/Code",
+			"style": {
+				"navigationBarTitleText": "在线刷题"
+			}
+		},
+		{
+			"path": "pages/xj/xj",
+			"style": {
+				"navigationBarTitleText": ""
 			}
 		}
 	],
