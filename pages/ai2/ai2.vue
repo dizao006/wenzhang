@@ -26,11 +26,18 @@
 				<view v-for="(item, index) in chatList" :key="index" :id="'message-' + index" class="message"
 					:class="item.role === 'user' ? 'user-message' : 'ai-message'">
 					<view class="bubble">
-						<text class="text">{{ item.content }}</text>
+						<view class="text">
+							<zero-markdown-view :markdown="item.content"></zero-markdown-view>
+						</view>
 						<view v-if="item.role === 'ai' && item.loading" class="thinking">
 							<view class="dot"></view>
 							<view class="dot"></view>
 							<view class="dot"></view>
+						</view>
+						<view v-if="item.role === 'ai' && !item.loading" class="copy-btn"
+							@click="copyText(item.content)">
+							<uni-icons type="copy" size="18" color="#6B7280" />
+							<text class="copy-text">复制</text>
 						</view>
 					</view>
 				</view>
@@ -51,7 +58,6 @@
 				<view class="send-btn" @click="sendMessage">
 					<uni-icons type="paperplane" size="24" color="#2B7FFF" />
 				</view>
-				<!-- <shibieVue></shibieVue> -->
 			</view>
 		</view>
 	</view>
@@ -62,7 +68,6 @@
 	import { XfVoiceRecognizer } from "@/common/xfVoice.js"
 	import { main, clearHistory as clearApiHistory, setBackground } from '@/common/ai.js';
 	import getAarticleDetatil from "../../ajax/api/interface/getAarticleDetatil";
-	import shibieVue from '../../components/shibie/shibie.vue';
 	const parm = defineProps(["articleId"]);
 
 	// 聊天记录
@@ -194,6 +199,24 @@
 			content: '你好！我是你的智能助手。我可以帮你处理各种任务，比如写作、翻译、回答问题等。请问有什么我可以帮你的吗？ 😊',
 		}];
 		uni.removeStorageSync('chatHistory');
+	};
+	const copyText = (text : string) => {
+		uni.setClipboardData({
+			data: text,
+			success: () => {
+				uni.showToast({
+					title: '已复制到剪贴板',
+					icon: 'none'
+				});
+			},
+			fail: (err) => {
+				console.error('复制失败:', err);
+				uni.showToast({
+					title: '复制失败',
+					icon: 'none'
+				});
+			}
+		});
 	};
 
 	const voiceRecognizer = ref(null);
@@ -430,5 +453,34 @@
 		100% {
 			transform: scale(1);
 		}
+	}
+
+	.copy-btn {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		margin-top: 12rpx;
+		padding-top: 8rpx;
+		border-top: 1rpx solid rgba(0, 0, 0, 0.1);
+		opacity: 0.6;
+		transition: opacity 0.2s;
+	}
+
+	.copy-btn:active {
+		opacity: 1;
+	}
+
+	.copy-text {
+		font-size: 12px;
+		color: #6B7280;
+		margin-left: 8rpx;
+	}
+
+	/* 调整AI消息气泡样式，为复制按钮留出空间 */
+	.ai-message .bubble {
+		background-color: #F7F7F7;
+		margin-right: auto;
+		padding-bottom: 16rpx;
+		/* 增加底部内边距 */
 	}
 </style>

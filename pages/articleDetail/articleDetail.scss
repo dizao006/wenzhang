@@ -117,14 +117,26 @@
 	left: 0px;	
 	top: 60%;
 }
+.fixed-popup {
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100%;
+  z-index: 999;
+}
+
+/* 内容区域样式 */
 .ai-popup-content {
   background-color: #fff;
-  border-radius: 10px 0 0 10px; /* 左侧圆角 */
-  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1); /* 左侧阴影 */
+  border-radius: 10px 0 0 10px;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  overflow-y: auto; /* 内容超出时滚动 */
-  transform: scale(60%);
-  position: relative;
-  right: -25%;
-  top: -15%;
+  width: 300px; /* 固定宽度 */
+  height: 70vh; /* 视窗高度的70% */
+  position: fixed;
+  right: 0;
+  top: 15%;
+  transform: scale(0.9);
+  transform-origin: right center;
+  overflow-y: auto; /* 内容超出时内部滚动 */
 }

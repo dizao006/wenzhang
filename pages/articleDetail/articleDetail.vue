@@ -8,7 +8,7 @@
 					fill="#4D6BFE" fill-opacity="1.000000" fill-rule="nonzero" />
 			</svg>
 		</view>
-		<uni-popup ref="aiPopup" type="right">
+		<uni-popup ref="aiPopup" type="right" class="fixed-popup">
 			<view class="ai-popup-content">
 				<AiVue :articleId="Parms._id"></AiVue>
 			</view>
@@ -78,7 +78,7 @@
 <script setup>
 	import love from "../../components/love/love.vue";
 	import commentBoxVue from "../../components/comment-box/commentBox.vue";
-	import AiVue from "../Ai/Ai.vue";
+	import AiVue from "../ai2/ai2.vue";
 	import {
 		onLoad
 	} from "@dcloudio/uni-app";
@@ -120,7 +120,6 @@
 	const isShows = ref(false)
 
 	function changeAi() {
-		console.log("sss")
 		if (isShows.value) {
 			aiPopup.value.close() // 打开 AI 弹窗
 			isShows.value = false
