@@ -2,24 +2,36 @@
   "hash": "7bfb79c2",
   "configHash": "31be615e",
   "lockfileHash": "b19a1aa0",
-  "browserHash": "bc6df257",
+  "browserHash": "09271280",
   "optimized": {
     "antd/es/list/Item": {
       "src": "../../../../../../../../node_modules/antd/es/list/Item.js",
       "file": "antd_es_list_Item.js",
-      "fileHash": "d531994e",
+      "fileHash": "c5aa6d07",
       "needsInterop": false
     },
     "crypto-js": {
       "src": "../../../../../node_modules/crypto-js/index.js",
       "file": "crypto-js.js",
-      "fileHash": "413b60df",
+      "fileHash": "93a6161a",
       "needsInterop": true
     },
     "base-64": {
       "src": "../../../../../node_modules/base-64/base64.js",
       "file": "base-64.js",
-      "fileHash": "091d8109",
+      "fileHash": "82033d10",
+      "needsInterop": true
+    },
+    "vosk-browser": {
+      "src": "../../../../../node_modules/vosk-browser/dist/vosk.js",
+      "file": "vosk-browser.js",
+      "fileHash": "1cdff998",
+      "needsInterop": true
+    },
+    "buffer": {
+      "src": "../../../../../node_modules/buffer/index.js",
+      "file": "buffer.js",
+      "fileHash": "53df56a6",
       "needsInterop": true
     }
   },

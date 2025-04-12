@@ -39,7 +39,7 @@
 
 		<view class="input-area">
 			<view class="input-container">
-				<view class="voice-btn" @touchstart="startRecording" @touchend="stopRecording"
+				<view class="voice-btn" @touchstart="startSpeechRecognition" @touchend="stopSpeechRecognition"
 					:class="{ 'recording': isRecording }">
 					<uni-icons :type="isRecording ? 'mic-filled' : 'mic'" size="24"
 						:color="isRecording ? '#FF0000' : '#6B7280'" />
@@ -51,6 +51,7 @@
 				<view class="send-btn" @click="sendMessage">
 					<uni-icons type="paperplane" size="24" color="#2B7FFF" />
 				</view>
+				<!-- <shibieVue></shibieVue> -->
 			</view>
 		</view>
 	</view>
@@ -61,7 +62,7 @@
 	import { XfVoiceRecognizer } from "@/common/xfVoice.js"
 	import { main, clearHistory as clearApiHistory, setBackground } from '@/common/ai.js';
 	import getAarticleDetatil from "../../ajax/api/interface/getAarticleDetatil";
-
+	import shibieVue from '../../components/shibie/shibie.vue';
 	const parm = defineProps(["articleId"]);
 
 	// 聊天记录
@@ -71,6 +72,13 @@
 	const artic = ref();
 	const scrollTop = ref(0);
 	const oldScrollTop = ref(0);
+
+	// 语音识别对象
+	const recognition = ref(new (window.SpeechRecognition || window.webkitSpeechRecognition)());
+	recognition.value.continuous = true;
+	recognition.value.interimResults = true;
+
+	const isRecording = ref(false);
 
 	// 加载历史记录
 	const loadChatHistory = () => {
@@ -106,6 +114,20 @@
 				uni.showToast({ title: err, icon: 'none' });
 			}
 		);
+
+		// 语音识别结果处理
+		recognition.value.onresult = (event) => {
+			const transcript = Array.from(event.results)
+				.map((result) => result[0])
+				.map((result) => result.transcript)
+				.join('');
+			inputText.value = transcript;
+			console.log('识别结果:', transcript);
+		};
+
+		recognition.value.onend = () => {
+			isRecording.value = false;
+		};
 	});
 
 	const handleScroll = (e : any) => {
@@ -175,18 +197,14 @@
 	};
 
 	const voiceRecognizer = ref(null);
-	const isRecording = ref(false);
 
-	const startRecording = async () => {
-		// console.log("ssss")
+	const startSpeechRecognition = async () => {
 		if (isRecording.value) return;
 
 		try {
 			// H5环境需要用户交互后才能调用录音API
 			isRecording.value = true;
-			// console.log(voiceRecognizer.value.statr(), "voiceRecognizer.value")
-			await voiceRecognizer.value.start();
-			// console.log("sss")
+			recognition.value.start();
 		} catch (error) {
 			isRecording.value = false;
 			uni.showToast({
@@ -196,10 +214,10 @@
 		}
 	};
 
-	const stopRecording = () => {
+	const stopSpeechRecognition = () => {
 		if (!isRecording.value) return;
 		isRecording.value = false;
-		voiceRecognizer.value.stop();
+		recognition.value.stop();
 	};
 </script>
 
