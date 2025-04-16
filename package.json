@@ -42,5 +42,8 @@
 		"custom": {
 			"^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue"
 		}
+	},
+	"devDependencies": {
+		"@vue/cli-plugin-unit-jest": "^5.0.8"
 	}
 }

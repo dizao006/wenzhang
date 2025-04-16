@@ -1,49 +1,31 @@
 {
-  "hash": "7bfb79c2",
-  "configHash": "31be615e",
+  "hash": "dd38d897",
+  "configHash": "c0a84471",
   "lockfileHash": "b19a1aa0",
-  "browserHash": "977cf1d4",
+  "browserHash": "6b3a9260",
   "optimized": {
     "antd/es/list/Item": {
       "src": "../../../../../../../../node_modules/antd/es/list/Item.js",
       "file": "antd_es_list_Item.js",
-      "fileHash": "08d69c34",
+      "fileHash": "2a752542",
       "needsInterop": false
     },
     "crypto-js": {
       "src": "../../../../../node_modules/crypto-js/index.js",
       "file": "crypto-js.js",
-      "fileHash": "09349130",
+      "fileHash": "dcb20ba6",
       "needsInterop": true
     },
     "base-64": {
       "src": "../../../../../node_modules/base-64/base64.js",
       "file": "base-64.js",
-      "fileHash": "1fe9881e",
+      "fileHash": "767553f1",
       "needsInterop": true
-    },
-    "vosk-browser": {
-      "src": "../../../../../node_modules/vosk-browser/dist/vosk.js",
-      "file": "vosk-browser.js",
-      "fileHash": "711e3604",
-      "needsInterop": true
-    },
-    "buffer": {
-      "src": "../../../../../node_modules/buffer/index.js",
-      "file": "buffer.js",
-      "fileHash": "9b689e84",
-      "needsInterop": true
-    },
-    "marked": {
-      "src": "../../../../../node_modules/marked/lib/marked.esm.js",
-      "file": "marked.js",
-      "fileHash": "3d082e40",
-      "needsInterop": false
     }
   },
   "chunks": {
-    "chunk-7RP6IU3L": {
-      "file": "chunk-7RP6IU3L.js"
+    "chunk-BQWMX7FD": {
+      "file": "chunk-BQWMX7FD.js"
     }
   }
 }
