@@ -6,6 +6,6 @@ module.exports = {
 	watchPathIgnorePatterns: ['/node_modules/', '/dist/', '/.git/'],
 	moduleFileExtensions: ['js', 'json'],
 	rootDir: __dirname,
-	testMatch: ["<rootDir>/pages/ai2/ai2.test.js"],
+	testMatch: ["<rootDir>/pages/**/*test.[jt]s?(x)"],
 	testPathIgnorePatterns: ['/node_modules/']
 }

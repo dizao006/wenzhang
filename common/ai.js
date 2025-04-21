@@ -96,5 +96,4 @@ export function setBackground(background) {
 		role: 'system',
 		content: background,
 	});
-	console.log("sssabcs")
 }

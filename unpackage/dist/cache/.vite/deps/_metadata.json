@@ -1,31 +1,25 @@
 {
-  "hash": "dd38d897",
-  "configHash": "c0a84471",
+  "hash": "7918a9b2",
+  "configHash": "9146838e",
   "lockfileHash": "b19a1aa0",
-  "browserHash": "6b3a9260",
+  "browserHash": "504b7e70",
   "optimized": {
     "antd/es/list/Item": {
-      "src": "../../../../../../../../node_modules/antd/es/list/Item.js",
+      "src": "../../../../../../../../../node_modules/antd/es/list/Item.js",
       "file": "antd_es_list_Item.js",
-      "fileHash": "2a752542",
+      "fileHash": "9400c17c",
       "needsInterop": false
     },
-    "crypto-js": {
-      "src": "../../../../../node_modules/crypto-js/index.js",
-      "file": "crypto-js.js",
-      "fileHash": "dcb20ba6",
-      "needsInterop": true
-    },
-    "base-64": {
-      "src": "../../../../../node_modules/base-64/base64.js",
-      "file": "base-64.js",
-      "fileHash": "767553f1",
-      "needsInterop": true
+    "marked": {
+      "src": "../../../../../../../../../node_modules/marked/lib/marked.esm.js",
+      "file": "marked.js",
+      "fileHash": "1a94d621",
+      "needsInterop": false
     }
   },
   "chunks": {
-    "chunk-BQWMX7FD": {
-      "file": "chunk-BQWMX7FD.js"
+    "chunk-LNEMQRCO": {
+      "file": "chunk-LNEMQRCO.js"
     }
   }
 }

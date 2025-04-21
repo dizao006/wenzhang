@@ -39,6 +39,17 @@
 							<uni-icons type="copy" size="18" color="#6B7280" />
 							<text class="copy-text">复制</text>
 						</view>
+						<view v-if="item.role === 'ai' && !item.loading">
+							<view v-if="!item.isSpeaking" class="voice-btn" @click="startSpeak(item)">
+								<uni-icons type="sound" size="18" color="#6B7280" />
+								<text class="copy-text">朗读</text>
+							</view>
+							<!-- 暂停按钮 - 正在朗读时显示 -->
+							<view v-if="item.isSpeaking" class="voice-btn" @click="pauseSpeak(item)">
+								<uni-icons type="pause" size="18" color="#2B7FFF" />
+								<text class="copy-text">暂停</text>
+							</view>
+						</view>
 					</view>
 				</view>
 			</view>
@@ -65,18 +76,27 @@
 
 <script lang="ts" setup>
 	import { ref, onMounted, nextTick } from 'vue';
-	import { XfVoiceRecognizer } from "@/common/xfVoice.js"
 	import { main, clearHistory as clearApiHistory, setBackground } from '@/common/ai.js';
 	import getAarticleDetatil from "../../ajax/api/interface/getAarticleDetatil";
 	const parm = defineProps(["articleId"]);
 
 	// 聊天记录
-	const chatList = ref<Array<{ role : string, content : string, loading ?: boolean }>>([]);
+	const chatList = ref<Array<{
+		role : string,
+		content : string,
+		loading ?: boolean,
+		isSpeaking ?: boolean
+	}>>([]);
 	const inputText = ref('');
 	const isDeepThinking = ref(false);
 	const artic = ref();
 	const scrollTop = ref(0);
 	const oldScrollTop = ref(0);
+	const speechSynthesis = ref({
+		instance: null as SpeechSynthesisUtterance | null,
+		currentIndex: -1 // 当前正在朗读的消息索引
+	});
+	const isFinally = ref(false)
 
 	// 语音识别对象
 	const recognition = ref(new (window.SpeechRecognition || window.webkitSpeechRecognition)());
@@ -109,30 +129,30 @@
 		}
 
 		// 初始化语音识别
-		voiceRecognizer.value = new XfVoiceRecognizer();
-		voiceRecognizer.value.init(
-			(text) => {
-				inputText.value = text;
-				console.log(text, "jieg")
-			},
-			(err) => {
-				uni.showToast({ title: err, icon: 'none' });
-			}
-		);
+		// voiceRecognizer.value = new XfVoiceRecognizer();
+		// voiceRecognizer.value.init(
+		// 	(text) => {
+		// 		inputText.value = text;
+		// 		console.log(text, "jieg")
+		// 	},
+		// 	(err) => {
+		// 		uni.showToast({ title: err, icon: 'none' });
+		// 	}
+		// );
 
-		// 语音识别结果处理
-		recognition.value.onresult = (event) => {
-			const transcript = Array.from(event.results)
-				.map((result) => result[0])
-				.map((result) => result.transcript)
-				.join('');
-			inputText.value = transcript;
-			console.log('识别结果:', transcript);
-		};
+		// // 语音识别结果处理
+		// recognition.value.onresult = (event) => {
+		// 	const transcript = Array.from(event.results)
+		// 		.map((result) => result[0])
+		// 		.map((result) => result.transcript)
+		// 		.join('');
+		// 	inputText.value = transcript;
+		// 	console.log('识别结果:', transcript);
+		// };
 
-		recognition.value.onend = () => {
-			isRecording.value = false;
-		};
+		// recognition.value.onend = () => {
+		// 	isRecording.value = false;
+		// };
 	});
 
 	const handleScroll = (e : any) => {
@@ -140,6 +160,7 @@
 	};
 
 	const sendMessage = async () => {
+		isFinally.value = false
 		if (!inputText.value.trim()) {
 			uni.showToast({ title: '请输入内容', icon: 'none' });
 			return;
@@ -150,7 +171,7 @@
 
 		chatList.value.push(
 			{ role: 'user', content: userMessage },
-			{ role: 'ai', content: '', loading: true }
+			{ role: 'ai', content: '', loading: true, isSpeaking: false }
 		);
 
 		await nextTick();
@@ -165,6 +186,7 @@
 					scrollToBottom();
 				}
 			}, isDeepThinking.value);
+			isFinally.value = true
 		} catch (error) {
 			console.error('请求出错:', error);
 			uni.showToast({ title: '请求失败，请重试', icon: 'none' });
@@ -241,6 +263,42 @@
 		if (!isRecording.value) return;
 		isRecording.value = false;
 		recognition.value.stop();
+	};
+
+	const startSpeak = (item : any, index : number) => {
+		// 停止当前正在朗读的内容
+		if (speechSynthesis.value.instance) {
+			window.speechSynthesis.cancel();
+		}
+
+		// 创建新的语音实例
+		const utterance = new SpeechSynthesisUtterance(item.content);
+		utterance.lang = 'zh-CN';
+		utterance.rate = 2.0;
+
+		// 更新状态
+		item.isSpeaking = true;
+		speechSynthesis.value.instance = utterance;
+		speechSynthesis.value.currentIndex = chatList.value.indexOf(item);
+
+		// 设置事件监听
+		utterance.onend = () => {
+			item.isSpeaking = false;
+			speechSynthesis.value.instance = null;
+			speechSynthesis.value.currentIndex = -1;
+		};
+		// 开始朗读
+		window.speechSynthesis.speak(utterance);
+	};
+
+	// 暂停朗读
+	const pauseSpeak = (item : any) => {
+		if (speechSynthesis.value.instance) {
+			window.speechSynthesis.cancel();
+			item.isSpeaking = false;
+			speechSynthesis.value.instance = null;
+			speechSynthesis.value.currentIndex = -1;
+		}
 	};
 </script>
 
@@ -482,5 +540,70 @@
 		margin-right: auto;
 		padding-bottom: 16rpx;
 		/* 增加底部内边距 */
+	}
+
+	.action-buttons {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		margin-top: 12rpx;
+		padding-top: 8rpx;
+		border-top: 1rpx solid rgba(0, 0, 0, 0.1);
+	}
+
+	.copy-btn,
+	.voice-btn {
+		display: flex;
+		align-items: center;
+		margin-left: 20rpx;
+		opacity: 0.6;
+		transition: opacity 0.2s;
+	}
+
+	.copy-btn:active,
+	.voice-btn:active {
+		opacity: 1;
+	}
+
+	.copy-text {
+		font-size: 12px;
+		color: #6B7280;
+		margin-left: 8rpx;
+	}
+
+	.action-buttons {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		margin-top: 12rpx;
+		padding-top: 8rpx;
+		border-top: 1rpx solid rgba(0, 0, 0, 0.1);
+	}
+
+	.copy-btn,
+	.voice-btn {
+		display: flex;
+		align-items: center;
+		margin-left: 20rpx;
+		opacity: 0.6;
+		transition: all 0.2s;
+	}
+
+	.copy-btn:active,
+	.voice-btn:active {
+		opacity: 1;
+		transform: scale(0.95);
+	}
+
+	.copy-text {
+		font-size: 12px;
+		color: #6B7280;
+		margin-left: 8rpx;
+	}
+
+	/* 朗读按钮激活状态 */
+	.voice-btn.active {
+		opacity: 1;
+		color: #2B7FFF;
 	}
 </style>

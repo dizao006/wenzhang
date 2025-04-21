@@ -1,3 +1,167 @@
 // 本文件中的json内容将在云函数【运行】时作为参数传给云函数。
 // 配置教程参考：https://uniapp.dcloud.net.cn/uniCloud/rundebug.html#runparam
-{}
+{
+	"userInfo": {
+		"_id": "671b355544e1a97713097006",
+		"article_ids": [
+			"302042",
+			"301911",
+			"a3d9c7a32cc380b85e18d6a6ca4f1e47",
+			"6eefef7239244da6ef0a42d5131f56c5",
+			"b0ee51720ace09faaac48a7e48de315a",
+			"8ea8d84048ed16b80e53dc811239f219",
+			"1680cb0786c8294a64ddaa77889018b7",
+			"5fdec0e5122f57f6c39777141d86d4cd",
+			"582cd6ec68392102b9cc5df3f17a0afb",
+			"4bd5e330ad0191a736474a5fe87f2227",
+			"1aee0c17a7790f5bbb26a92ce836511e",
+			"eaa40acef2409797b4eaa298e6018656",
+			"c1b205785b51c20f466bf8d9e21cf463"
+		],
+		"article_likes_ids": [
+			"671b35535fa47eb4b65ff343",
+			"671b35535fa47eb4b65ff344",
+			"671b35535fa47eb4b65ff345"
+		],
+		"author_likes_ids": [
+			"8010388"
+		],
+		"author_name": "Java架构师讲师团",
+		"avatar": "https://env-00jxhafly6bt.normal.cloudstatic.cn/avatar/白毛 围巾 白色长发动漫女孩 4K壁纸 3840x2160_彼岸图网.jpg?expire_at=1739602675&er_sign=44425bbf4a24c77707184f0c5d748684",
+		"explain": "架构师成长沟通群878622640，欢迎加入~",
+		"fans_count": 100,
+		"follow_count": 12,
+		"gender": "男",
+		"id": "8010388",
+		"integral_count": 455,
+		"professional": "架构师123",
+		"status": "normal",
+		"thumbs_up_article_ids": [
+			"671b35535fa47eb4b65ff343"
+		],
+		"loginName": "dizao06",
+		"password": "dizao08",
+		"phone": "15670087192",
+		"selected": [{
+				"date": "2024-12-17",
+				"info": "签到"
+			},
+			{
+				"date": "2024-12-16",
+				"info": "签到"
+			},
+			{
+				"date": "2024-12-18",
+				"info": "打卡"
+			},
+			{
+				"date": "2024-12-19",
+				"info": "打卡"
+			},
+			{
+				"date": "2024-12-21",
+				"info": "打卡"
+			},
+			{
+				"date": "2024-12-22",
+				"info": "打卡"
+			},
+			{
+				"date": "2024-12-23",
+				"info": "打卡"
+			},
+			{
+				"date": "2024-12-24",
+				"info": "打卡"
+			},
+			{
+				"date": "2024-12-25",
+				"info": "打卡"
+			},
+			{
+				"date": "2024-12-28",
+				"info": "打卡"
+			},
+			{
+				"date": "2025-01-11",
+				"info": "打卡"
+			},
+			{
+				"date": "2025-01-26",
+				"info": "打卡"
+			},
+			{
+				"date": "2025-02-15",
+				"info": "打卡"
+			},
+			{
+				"date": "2025-02-27",
+				"info": "打卡"
+			},
+			{
+				"date": "2025-03-03",
+				"info": "打卡"
+			},
+			{
+				"date": "2025-03-24",
+				"info": "打卡"
+			},
+			{
+				"date": "2025-04-08",
+				"info": "打卡"
+			},
+			{
+				"date": "2025-04-09",
+				"info": "打卡"
+			},
+			{
+				"date": "2025-04-13",
+				"info": "打卡"
+			},
+			{
+				"date": "2025-04-14",
+				"info": "打卡"
+			}
+		],
+		"labelIds": [
+			"671b3554e6c31814ba555886",
+			"671b3554e6c31814ba55588a",
+			"671b3554e6c31814ba555887",
+			"671b3554e6c31814ba55588b",
+			"671b3554e6c31814ba555889",
+			"671b3554e6c31814ba555888"
+		],
+		"labelListItem": [{
+				"name": "前端开发",
+				"_id": "671b3554e6c31814ba555886",
+				"user": []
+			},
+			{
+				"name": "后端开发",
+				"_id": "671b3554e6c31814ba555887",
+				"user": []
+			},
+			{
+				"name": "移动开发",
+				"_id": "671b3554e6c31814ba555888",
+				"user": []
+			},
+			{
+				"name": "职场生活",
+				"_id": "671b3554e6c31814ba555889",
+				"user": []
+			},
+			{
+				"name": "精彩直播",
+				"_id": "671b3554e6c31814ba55588a",
+				"user": []
+			},
+			{
+				"name": "每日一题",
+				"_id": "671b3554e6c31814ba55588b",
+				"user": []
+			}
+		]
+	},
+	"id": "671b355544e1a97713097006"
+}

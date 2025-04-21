@@ -2,7 +2,7 @@
 import {
   __commonJS,
   __toESM
-} from "./chunk-BQWMX7FD.js";
+} from "./chunk-LNEMQRCO.js";
 
 // C:/Users/22216/node_modules/react/cjs/react.development.js
 var require_react_development = __commonJS({
