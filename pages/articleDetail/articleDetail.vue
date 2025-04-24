@@ -80,7 +80,8 @@
 	import commentBoxVue from "../../components/comment-box/commentBox.vue";
 	import AiVue from "../ai2/ai2.vue";
 	import {
-		onLoad
+		onLoad,
+		onShow
 	} from "@dcloudio/uni-app";
 	import {
 		marked
@@ -118,6 +119,10 @@
 	const repalyData = ref()
 	const aiPopup = ref() // AI 弹窗引用
 	const isShows = ref(false)
+
+	onShow(async () => {
+		await checkLogin()
+	})
 
 	function changeAi() {
 		if (isShows.value) {

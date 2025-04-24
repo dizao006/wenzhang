@@ -25,7 +25,8 @@
 
 <script setup>
 	import {
-		onLoad
+		onLoad,
+		onShow
 	}
 	from "@dcloudio/uni-app"
 	import {
@@ -54,6 +55,9 @@
 	const authorDataNone = ref(false)
 	const currentIndex = ref(0)
 	const authorList = ref([])
+	onShow(async () => {
+		await checkLogin()
+	})
 	uni.$on('updateArticle', () => {
 		getArticTxt()
 	})

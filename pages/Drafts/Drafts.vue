@@ -61,9 +61,9 @@
 
 	// 跳转到文章编辑页
 	const goToEdit = (articleId) => {
-		uni.navigateTo({
-			url: `/pages/articPush/articPush?articleId=${articleId}`
-		});
+		uni.redirectTo({
+			url: `/pages/articpush/articpush?articleId=${articleId}`
+		})
 	};
 
 	// 删除草稿

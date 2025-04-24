@@ -50,6 +50,7 @@
 		GameManager
 	} from "./game_manager.js";
 
+
 	export default {
 		setup() {
 			const score = ref(0);

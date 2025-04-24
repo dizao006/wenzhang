@@ -59,9 +59,19 @@
 		getArticleById
 	} from "@/ajax/api/interface/getArticleById.js";
 	import {
-		onHide
+		onHide,
+		onLoad,
+		onShow
 	} from "@dcloudio/uni-app";
-
+	import {
+		useIsLoggedIn
+	} from "@/common/isLogin.js"
+	const {
+		checkLogin
+	} = useIsLoggedIn()
+	onShow(async () => {
+		await checkLogin()
+	})
 	const store = useStore();
 
 	// 标题
@@ -93,6 +103,12 @@
 
 	// 返回方法
 	const goBack = async () => {
+		if (!title.value || !content.value) {
+			uni.switchTab({
+				url: "/pages/index/index"
+			});
+			return;
+		}
 		uni.showToast({
 			title: "自动保存成功",
 			icon: "success"
@@ -123,6 +139,13 @@
 
 	// 保存为草稿
 	const save = async () => {
+		if (!title.value || !content.value) {
+			uni.showToast({
+				title: "标题或内容不能为空",
+				icon: "error"
+			});
+			return;
+		}
 		const data = {
 			abstractText: content.value.slice(0, 20),
 			author: {

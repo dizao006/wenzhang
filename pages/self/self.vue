@@ -169,22 +169,34 @@
 	import {
 		useStore
 	} from "vuex";
-	import {
-		onLoad
-	} from "@dcloudio/uni-app";
+
 	import {
 		get_current_version
 	} from "@/ajax/api/interface/get_current_version.js";
 	import {
 		AvatarUpdate
 	} from "@/ajax/api/interface/AvatarUpdate.js";
+	import {
+		useIsLoggedIn
+	} from "@/common/isLogin.js"
+	import {
+		onLoad,
+		onShow
+	} from "@dcloudio/uni-app";
+	const {
+		checkLogin
+	} = useIsLoggedIn()
+	onShow(async () => {
+		await checkLogin()
+	})
 	const currentVersion = ref("1.0.0");
 	const haveNewVersion = ref(false);
 	const store = useStore();
 	let isLocked = ref(false)
 
 
-	onLoad(() => {
+	onLoad(async () => {
+		await checkLogin()
 		// #ifdef APP-PLUS
 		uni.getSystemInfo({
 			success: (res) => {
@@ -198,6 +210,7 @@
 		});
 		// #endif
 	});
+
 
 	function goLoginPage() {
 		uni.navigateTo({

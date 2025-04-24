@@ -178,9 +178,9 @@
 			}
 		},
 		{
-			"path": "pages/articPush/articPush",
+			"path": "pages/articpush/articpush",
 			"style": {
-				"navigationBarTitleText": ""
+				"navigationBarTitleText": "草稿"
 			}
 		},
 		{
