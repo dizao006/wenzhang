@@ -9,9 +9,9 @@ exports.main = async (event, context) => {
 	} = event;
 	// 检查是否提供了 _id
 	const userInfo = await db.collection("user").doc(id).get()
-	console.log(userInfo.data[0].integral_count, "ssss")
+	console.log(count, typeof count, "count")
 	await db.collection("user").doc(id).update({
-		integral_count: userInfo.data[0].integral_count + count
+		integral_count: +userInfo.data[0].integral_count + +count
 	})
 	const result = await db.collection("user").doc(id).get()
 	return {

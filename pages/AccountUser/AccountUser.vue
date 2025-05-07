@@ -174,7 +174,7 @@
 		// 这里调用提现接口
 		let res = await addIntegrl_count({
 			id: store.state.userInfo._id,
-			count: -withdrawAmount.value
+			count: Number(-withdrawAmount.value)
 		})
 		if (res.code == 0) {
 			uni.showToast({
