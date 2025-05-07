@@ -127,32 +127,6 @@
 				setBackground(artic.value.content);
 			}
 		}
-
-		// 初始化语音识别
-		// voiceRecognizer.value = new XfVoiceRecognizer();
-		// voiceRecognizer.value.init(
-		// 	(text) => {
-		// 		inputText.value = text;
-		// 		console.log(text, "jieg")
-		// 	},
-		// 	(err) => {
-		// 		uni.showToast({ title: err, icon: 'none' });
-		// 	}
-		// );
-
-		// // 语音识别结果处理
-		// recognition.value.onresult = (event) => {
-		// 	const transcript = Array.from(event.results)
-		// 		.map((result) => result[0])
-		// 		.map((result) => result.transcript)
-		// 		.join('');
-		// 	inputText.value = transcript;
-		// 	console.log('识别结果:', transcript);
-		// };
-
-		// recognition.value.onend = () => {
-		// 	isRecording.value = false;
-		// };
 	});
 
 	const handleScroll = (e : any) => {
