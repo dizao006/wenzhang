@@ -39,7 +39,7 @@
 					<view class="function-signature">
 						{{ functionSignature }}
 					</view>
-					<textarea class="code-editor" v-model="userAnswer" placeholder="// 在此编写你的代码"
+					<textarea maxlength="9999" class="code-editor" v-model="userAnswer" placeholder="// 在此编写你的代码"
 						:show-confirm-bar="false" cursor-spacing="20" @input="onCodeInput"
 						:adjust-position="false"></textarea>
 					<view class="function-close">
